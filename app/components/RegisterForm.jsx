@@ -4,12 +4,15 @@ import Link from "next/link";
 import { useState } from "react";
 import CVLogo from "../../public/assets/Logo.svg";
 import '../../app/globals.css';
+import { useRouter } from 'next/navigation';
 
 export default function RegisterForm() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+
+    const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,6 +39,8 @@ export default function RegisterForm() {
             return;
         }
 
+        
+
         const res = await fetch('api/register', {
             method: "POST",
             headers: {
@@ -48,7 +53,8 @@ export default function RegisterForm() {
 
         if (res.ok) {
             const form = e.target;
-            form.reset()
+            form.reset();
+            router.push('/');
         } else {
             console.log("User registration failed.");
         }
