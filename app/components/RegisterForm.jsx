@@ -1,7 +1,9 @@
 'use client';
-
+import React from 'react';
 import Link from "next/link";
 import { useState } from "react";
+import CVLogo from "../../public/assets/Logo.svg";
+import '../../app/globals.css';
 
 export default function RegisterForm() {
     const [name, setName] = useState("");
@@ -48,15 +50,17 @@ export default function RegisterForm() {
             // everything is ok!!
 
     return <div className="grid place-items-center h-screen">
-    <div className="shadow-lg p-5 rounded-lg border-t-4 border-purple-400">
-        <h1 className="text-xl font-bold my-4">Register</h1>
+    <div className="">
+        <div className='flex flex-col items-center justify-center'>
+        <CVLogo style={{width: "150px", height: "150px"}} className="ml-[20px]"/>
+        <h1 className="text-2xl text-center font-bold my-4 text-gradient">Register</h1>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+        <form onSubmit={handleSubmit} className="flex flex-col items-center gap-5">
             <input onChange={e => setName(e.target.value)} type="text" placeholder="Full Name"/>
             <input onChange={e => setEmail(e.target.value)} type="text" placeholder="Email"/>
             <input onChange={e => setPassword(e.target.value)} type="password" placeholder="Password"/>
-            <button className="align-center w-[100px] bg-purple-400 py-2 rounded-lg
-            cursor-pointer text-white">Register</button>
+            <button className="align-center w-[100px] box-gradient py-2 rounded-lg
+            cursor-pointer text-white">Submit</button>
 
 
 
@@ -65,8 +69,9 @@ export default function RegisterForm() {
             )}
             
 
-            <p className="text-sm mt-3 text-right">Already have an account? <Link href={"/"} className="underline">Login</Link></p>
+            <p className="text-sm mt-3 text-right text-white">Already have an account? <Link href={"/"} className="underline">Login</Link></p>
         </form>
+    </div>
     </div>
 </div>
 }

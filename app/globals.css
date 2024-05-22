@@ -3,7 +3,17 @@
 @tailwind utilities;
 
 input {
-    @apply w-[300px] border border-gray-300 rounded-md px-3 py-2 shadow-sm
-    focus:outline-none focus:ring-2 focus:ring-purple-400
+    @apply w-[300px] rounded-md px-3 py-2 shadow-sm
+    focus:outline-none focus:ring-2 focus:ring-purple-600
     focus:border-transparent bg-purple-300/30
 }
+
+.text-gradient {
+    background: linear-gradient(to bottom right, #9208C2, #309CFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .box-gradient {
+    background: linear-gradient(to bottom right, #9208C2, #309CFF);
+  }

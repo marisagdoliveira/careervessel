@@ -2,6 +2,9 @@ import Link from "next/link";
 
 export default function LoginForm() {
     return <div className="grid place-items-center h-screen">
+        <div>
+
+        
         <div className="shadow-lg p-5 rounded-lg border-t-4 border-purple-400">
             <h1 className="text-xl font-bold my-4">Login</h1>
 
@@ -15,6 +18,7 @@ export default function LoginForm() {
 
                 <p className="text-sm mt-3 text-right">Don't have an account yet? <Link href={"/register"} className="underline">Register</Link></p>
             </form>
+        </div>
         </div>
     </div>
 }
