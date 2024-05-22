@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 export default function UserInfo() {
   const {data: session} = useSession();
 
-
+  
   return (
     <div className="grid place-items-center h-screen">
       <div className=" flex flex-col shadow-lg p-5 rounded-lg my-6 border-t-4 border-purple-400 gap-4" >

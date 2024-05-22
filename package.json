@@ -12,12 +12,13 @@
     "@svgr/webpack": "^8.1.0",
     "bcryptjs": "^2.4.3",
     "mongoose": "^8.4.0",
-    "next": "14.2.3",
+    "next": "^14.2.3",
     "next-auth": "^4.24.7",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
+    "babel-install": "2.1.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",

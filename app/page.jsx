@@ -1,7 +1,8 @@
-import LoginForm from "./components/LoginForm";
+
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "./api/auth/[...nextauth]/route";
+import HomePage from "./components/HomePage";
 
 
 export default async function Home() {
@@ -10,8 +11,8 @@ export default async function Home() {
   if (session) redirect("/dashboard");
 
   return (
-    <main className="bg-zinc-700">
-      <LoginForm />
+    <main className="bg-zinc-700 overflow-hidden">
+      <HomePage />
       
     </main>
   );

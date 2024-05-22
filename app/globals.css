@@ -3,17 +3,56 @@
 @tailwind utilities;
 
 input {
-    @apply w-[300px] rounded-md px-3 py-2 shadow-sm
-    focus:outline-none focus:ring-2 focus:ring-purple-600
-    focus:border-transparent bg-purple-300/30
+  @apply w-[300px] rounded-md px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-purple-300/30
 }
 
 .text-gradient {
-    background: linear-gradient(to bottom right, #9208C2, #309CFF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: linear-gradient(to bottom right, #9208C2, #309CFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.box-gradient {
+  background: linear-gradient(to bottom right, #9208C2, #309CFF);
+}
+
+.spin-animation {
+  animation: spin 3s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform-origin: right center;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: right center;
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(0);
   }
 
-  .box-gradient {
-    background: linear-gradient(to bottom right, #9208C2, #309CFF);
+  50% {
+    transform: translateY(-15px);
   }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+.transition-all {
+  transition-property: all;
+  transition-duration: 0.8s;
+  transition-timing-function: cubic-bezier(.76, .17, .26, .96);
+}
