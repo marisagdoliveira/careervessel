@@ -9,15 +9,15 @@ import '../../app/globals.css';
 export default function Slider({sliderposition}){
 
     return (
-      <div className={`absolute transition-all ${sliderposition} w-[800px] h-screen bg-[#D2CDD1]`}>
+      <div className={`absolute transition-all ${sliderposition} w-[40vw] h-[100vh] bg-[#D2CDD1]`}>
         <img src="/assets/hand-background.png" className="z-0 absolute w-full h-screen object-cover"/>
         <Shape className="absolute w-full h-full object-cover"/>
         <img src="/assets/hand.png" className="absolute w-full  h-screen object-cover"/>
-        <h1 className="absolute text-4xl text-white left-28 top-10 font-bold">Welcome Aboard</h1>
-        <h1 className="absolute text-6xl text-white left-60 top-24 font-bold">Your Future</h1>
+        <h1 className="absolute text-[2vw] text-white left-[5vw] top-[2vw] font-bold">Welcome Aboard</h1>
+        <h1 className="absolute text-[3.5vw] text-white left-[10vw] top-[4vw] font-bold">Your Future</h1>
         <RotatingIcons />
-        <h2 className="absolute text-3xl text-right text-white right-20 top-80 font-bold w-[210px]">Generate your new Resume with AI</h2>
-        <h2 className="absolute text-2xl text-right text-white right-32 top-[820px] font-bold">Excited to sail with you...</h2>
+        <h2 className="absolute text-[1.5vw] text-right text-white right-[3vw] top-[14vw] font-bold w-[10vw]">Generate your Resume with AI</h2>
+        <h2 className="absolute text-[1vw] text-right text-white right-[9vw] top-[48vw] font-bold">Excited to sail with you...</h2>
       </div>
     );
   }

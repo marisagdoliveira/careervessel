@@ -7,13 +7,13 @@ import '../../app/globals.css';
 const RotatingIcons = () => {
   return (
    
-<div className='absolute top-[350px] left-[380px]'>
+<div className='absolute top-[19vw] left-[20vw]'>
   <div className="spin-animation">
     <div className="icon-container">
-      <GitHubIcon className="absolute left-24 top-4" style={{width: "50px", height: "50px"}}/>
-      <GlassDoorIcon className="absolute top-2" style={{width: "50px", height: "50px"}}/>
-      <LinkedinIcon className="absolute left-8 top-14" style={{width: "50px", height: "50px"}}/>
-      <IndeedIcon className="absolute left-8 " style={{width: "50px", height: "50px"}}/>
+      <GitHubIcon className="absolute left-[6vw] top-[1vw]" style={{width: "3.4vw", height: "3.4vw"}}/>
+      <GlassDoorIcon className="absolute top-[0.5vw]" style={{width: "3.4vw", height: "3.4vw"}}/>
+      <LinkedinIcon className="absolute left-[2vw] top-[4vw]" style={{width: "3.4vw", height: "3.4vw"}}/>
+      <IndeedIcon className="absolute left-[2vw] " style={{width: "3.4vw", height: "3.4vw"}}/>
     </div>
   </div>
 </div>

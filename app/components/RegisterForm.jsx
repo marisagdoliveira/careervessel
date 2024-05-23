@@ -74,24 +74,24 @@ export default function RegisterForm({ handlesSlide }){
     return <div className="grid place-items-center">
 
         <div className='flex flex-col items-center justify-center'>
-            <CVLogo style={{ width: "150px", height: "150px" }} className="ml-[20px]" />
-            <h1 className="text-2xl text-center font-bold my-4 text-gradient">Register</h1>
+            <CVLogo style={{ width: "10vw", height: "10vw" }} className="ml-[20px]" />
+            <h1 className="text-[1.7vw] text-center font-bold my-4 text-gradient">Register</h1>
 
             <form onSubmit={handleSubmit} className="flex flex-col items-center gap-5">
                 <input onChange={e => setName(e.target.value)} onClick={e => setError("")} type="text" placeholder="Full Name" />
                 <input onChange={e => setEmail(e.target.value)} onClick={e => setError("")} type="text" placeholder="Email" />
                 <input onChange={e => setPassword(e.target.value)} type="password" placeholder="Password" />
-                <button className="align-center w-[100px] box-gradient py-2 rounded-lg
+                <button className="align-center w-[8vw] h-[2.5vw] text-[1vw] box-gradient py-2 rounded-lg
             cursor-pointer text-white">Submit</button>
 
 
 
                 {error && (
-                    <div className="bg-red-500 text-white rounded-lg p-1">{error}</div>
+                    <div className="bg-red-500 text-white text-[0.9vw] rounded-lg p-1">{error}</div>
                 )}
 
 
-                <p className="text-sm mt-3 text-right text-white">Already have an account? <span onClick={() => handlesSlide()} className="text-gradient text-base cursor-pointer">Login</span></p>
+                <p className="text-[0.9vw] mt-3 text-right text-white">Already have an account? <span onClick={() => handlesSlide()} className="text-gradient text-[1vw] cursor-pointer">Login</span></p>
             </form>
         </div>
 
