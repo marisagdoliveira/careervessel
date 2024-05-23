@@ -18,7 +18,7 @@ export default function HomePage() {
     };
     return (
         <main className="bg-zinc-800 overflow-hidden h-screen">
-            <div className="flex justify-center items-center px-[10vw] gap-[40vw] h-screen">
+            <div className="flex justify-center items-center px-[10vw] gap-[30vw] h-screen">
                 <LoginForm handlesSlide={handleSlideLeft} />
                 <Slider sliderposition={sliderPosition} />
                 <RegisterForm handlesSlide={handleSlideRight} />
