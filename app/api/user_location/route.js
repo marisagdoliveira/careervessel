@@ -25,7 +25,7 @@ export async function PATCH(req) {
     getUser.location = location;
     await getUser.save();
 
-    return NextResponse.json({ location: getUser }, { status: 201 });
+    return NextResponse.json({ user: getUser }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
       { message: "An error occured while updating the user location." },

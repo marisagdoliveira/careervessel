@@ -25,7 +25,7 @@ const userSchema = new Schema({
         type: String,
         required: false
     },
-    img_path: {
+    img: {
         type: String,
         required: false
     },

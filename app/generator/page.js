@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Cv1 from "../components/CVs/Cv1";
+import { getSession } from "next-auth/react";
 
 const page = () => {
   const [description, setdescription] = useState("");
@@ -49,7 +50,7 @@ const page = () => {
           throw new Error("Unauthorized");
         }
         const userId = session.user.id;
-
+        
         const response = await fetch("/api/user", {
           method: "POST",
           headers: {
@@ -63,7 +64,8 @@ const page = () => {
         }
 
         const userData = await response.json();
-        setObjectUser(userData);
+        console.log(userData.user)
+        setObjectUser(userData.user);
       } catch (error) {
         console.error("Error fetching user data:", error.message);
       } finally {
