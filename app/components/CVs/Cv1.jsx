@@ -1,100 +1,137 @@
 import React from 'react'
 import { MdEmail, MdLocationOn, MdOutlinePhoneIphone } from "react-icons/md";
-
-const user = {
-    name: 'John Doe',
-    email: 'j8vZi@example.com',
-    phone: '123-456-7890',
-    location: 'Anytown, USA',
-    imgsrc: '/assets/cv1.png'
-}
-
-const gptJson = {
-    education: [
-        {
-            role: 'Software Engineer',
-            company: 'Gaagle',
-            date: '2023-Present',
-        },
-        {
-            role: 'Junior Frontend',
-            company: 'MacroHard',
-            date: '2022-Present',
-        },
-        {
-            role: 'Internship UxDesign',
-            company: 'Pear',
-            date: '2021-Present',
-        },
-    ],
-    skills: [
-        'HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'MongoDB',
-    ]
-}
+import { FaLinkedinIn } from "react-icons/fa";
 
 
 const Cv1 = (props) => {
     const colors = props.colors
+    const object = props.object
+    const user = props.user
     console.log(colors)
   return (
-    <div className={`w-[794px] h-[1123px] bg-zinc-100`} >
+    <div className={`w-[794px] h-[1123px] bg-zinc-100 flex`} >
+
+
         <div className='w-[300px] h-[100%] px-5 py-7 flex flex-col gap-7 items-center' style={{backgroundColor: colors.color1}}>
             <div className="w-[170px] h-[170px] rounded-full bg-zinc-100 flex justify-center items-center">
                     <img src="/assets/cv1.png"/>
             </div>
             <h1 className='text-white p-2 w-full text-lg font-semibold text-center' style={{backgroundColor: colors.color2}}>Contact</h1>
-            <Contact/>
-            <h1 className='text-white p-2 w-full text-lg font-semibold text-center' style={{backgroundColor: colors.color2}}>Education</h1>
-            <Education />
+            <Contact userprop={user}/>
+            <h1 className='text-white p-2 w-full text-lg font-semibold text-center' style={{backgroundColor: colors.color2}}>Experience</h1>
+            <Experience object={object}/>
             <h1 className='text-white p-2 w-full text-lg font-semibold text-center' style={{backgroundColor: colors.color2}}>Skills</h1>
-            <Skills />
+            <Skills object={object}/>
         </div>
-        <div>
+
+
+        <div className='mt-10 ml-5 mr-5 w-[480px]'>
+            <div style={{color: colors.color2}} className='flex flex-col gap-5'>
+            <Name userprop={user} objectprop={object}/>
+            <h1 className='text-white p-2 mt-[23px] w-full text-lg font-semibold text-right' style={{backgroundColor: colors.color2}}>About me</h1>
+            <Bio object={object}/>
+            <h1 className='text-white p-2 mt-[40px] w-full text-lg font-semibold text-right' style={{backgroundColor: colors.color2}}>Education</h1>
+            <Education object={object}/>
+            <h1 className='text-white p-2 mt-[-5px] w-full text-lg font-semibold text-right' style={{backgroundColor: colors.color2}}>Tasks</h1>
+            <Tasks object={object}/>
+            </div>
 
         </div>
+
+
     </div>
   )
 }
 
 export default Cv1
 
-const Contact = () => {
+const Contact = ({userprop}) => {
+    const user1 = userprop
     return <div className='flex flex-col gap-3 w-[100%]'> 
                 <div className='flex items-center space-between gap-3'>
                     <MdEmail/>                                                                                                      
-                    <p>{user.email}</p>
+                    <p>{user1.email}</p>
                 </div>
                 <div className='flex items-center space-between gap-3'> 
                 <MdOutlinePhoneIphone/>                                                          
-                    <p>{user.phone}</p>
+                    <p>{user1.phone}</p>
+                </div>
+                <div className='flex items-center space-between gap-3'>
+                <FaLinkedinIn />                                                          
+                    <p>{user1.linkedin}</p>
                 </div>
                 <div className='flex items-center space-between gap-3'>
                     <MdLocationOn/>
-                    <p>{user.location}</p>
+                    <p>{user1.location}</p>
                 </div>
     </div>                                                                                                        
 }
 
-const Education = () => {
+const Experience = ({object}) => {
+    const experiences = object.experience
     return <div className='flex flex-col gap-3 w-[100%]'>
-        {gptJson.education.map((education) => {
-            return <div className='flex items-center space-between gap-1 w-[100%] text-left'>
-                <p className='font-bold text-sm '>{education.date}</p>
-                <p className='font-bold ml-[-25px]'>{education.role}</p>
-                <p className='text-sm text-right'>{education.company}</p>
+        
+        {experiences.map((experience, key) => {
+            return <div key={key} className='flex items-center space-between gap-1 w-[100%] text-left'>
+                <p className='font-bold text-sm w-[50%] '>{experience.date}</p>
+                <p className='font-bold w-[100%] text-right'>{experience.role}</p>
+                <p className='text-sm text-right w-[100%]'>{experience.company}</p>
                 
             </div>
         })}
     </div>
 }
-const Skills = () => {
+
+const Skills = ({object}) => {
     return <div className='flex flex-col gap-3 w-[100%]'>
-        {gptJson.skills.map((skill, key) => {
+        {object.skills.map((skill, key) => {
             return <div key={key} className={`w-[100%] flex items-center space-between gap-${key*5} text-left`} >
-                <p className='text-left mr-5'>{skill}</p>
+                <p key={key} className='text-left mr-5'>{skill}</p>
                     <div className='w-full h-3 bg-zinc-500'>
                        
                     </div>
+                </div>
+        })}
+    </div>
+}
+
+
+const Name = ({userprop, objectprop}) => {
+    const user1 = userprop
+    const object1 = objectprop
+    return <div>
+        <h1 className='text-8xl font-bold'>{user1.name}</h1>
+        <p className='text-4xl mt-2 text-right'>{object1.experience[0].role}</p>
+        </div>
+}
+
+const Education = ({object}) => {
+    return <div className='flex flex-col gap-3 w-[100%]'>
+        {object.education.map((education, key) => {
+            return <div key={key} className='flex items-center space-between gap-14 w-[100%] text-left'>
+                <p className='font-bold text-sm w-[100%]'>{education.course}</p>
+                <p className='font-bold text-right ml-[-25px] w-[25%]'>{education.school}</p>
+                <p className='text-sm text-right w-[25%]'>{education.date}</p>
+                
+            </div>
+        })}
+    </div>
+}
+
+const Bio = ({object}) => {
+    return <div>
+        <p className='text-base mt-2 text-justify'>{object.objective}</p>
+        </div>
+}
+
+const Tasks= ({object}) => {
+    return <div className='flex flex-col gap-3 w-[100%]'>
+        {object.tasks.map((task, key) => {
+            return <div key={key} className={`w-[100%] flex items-start justify-start gap-4`} >
+                <p className='font-bold'>{key + 1}</p>
+                <p className='w-[90%]'>{task}</p>
+                
+                    
                 </div>
         })}
     </div>

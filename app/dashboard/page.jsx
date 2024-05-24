@@ -2,5 +2,10 @@ import UserInfo from "../components/UserInfo";
 
 
 export default function Dashboard() {
-    return <UserInfo />
+    return (
+    
+    <div>
+        <Link href="/generator"><button>Generate</button></Link>
+        <UserInfo />
+        </div>)
 }
