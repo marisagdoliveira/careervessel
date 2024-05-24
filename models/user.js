@@ -13,6 +13,22 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    phone: {
+        type: String,
+        required: false
+    },
+    location: {
+        type: String,
+        required: false
+    },
+    linkedin: {
+        type: String,
+        required: false
+    },
+    img_path: {
+        type: String,
+        required: false
+    },
 }, { timestamps: true }
 );
 

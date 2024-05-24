@@ -10,6 +10,7 @@ export async function POST(req) {
         const { name, email, password } = await req.json();
         const hashedPassword = await bcrypt.hash(password, 10);
         await connectMongoDB();
+        
         await User.create({ name, email, password: hashedPassword });
 
         //console.log("Name", name)
