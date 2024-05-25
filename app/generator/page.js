@@ -50,14 +50,9 @@ const page = () => {
           throw new Error("Unauthorized");
         }
         const userId = session.user.id;
-        
-        const response = await fetch("/api/user", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ userId }),
-        });
+        const url = `/api/user?userId=${userId}`;
+        console.log(url);
+        const response = await fetch(url);
 
         if (!response.ok) {
           throw new Error("Failed to fetch user data");

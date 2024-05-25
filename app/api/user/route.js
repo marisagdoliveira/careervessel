@@ -5,11 +5,13 @@ import { connectMongoDB } from "@/lib/mongodb";
 
 const ObjectId = mongoose.Types.ObjectId;
 
-export async function POST(req) {
+export async function GET(req) {
   try {
     await connectMongoDB();
-    
-    const { userId } = await req.json();
+
+    const url = new URL(req.url, 'http://localhost');
+    const params = new URLSearchParams(url.search);
+    const userId  = params.get('userId')
     const getUser = await User.findOne({ _id: userId });
 
     if (!getUser) {
