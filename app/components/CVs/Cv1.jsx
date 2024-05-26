@@ -100,8 +100,8 @@ const Name = ({userprop, objectprop}) => {
     const user1 = userprop
     const object1 = objectprop
     return <div>
-        <h1 className='text-8xl font-bold'>{user1.name}</h1>
-        <p className='text-4xl mt-2 text-right'>{object1.experience[0].role}</p>
+        <h1 className='text-7xl font-bold mb-1'>{user1.name}</h1>
+        <p className='text-3xl mt-4 text-right'>{object1.experience[0].role}</p>
         </div>
 }
 

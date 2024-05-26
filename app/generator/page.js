@@ -1,10 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Cv1 from "../components/CVs/Cv1";
 import { getSession } from "next-auth/react";
+import '../../app/globals.css';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 const page = () => {
+  const printRef = useRef();
   const [description, setdescription] = useState("");
   const [colors, setColors] = useState({
     color1: "#dddddd",
@@ -71,12 +75,42 @@ const page = () => {
     fetchUserData();
   }, []); 
   
+  const handleSavePdf = async () => {
+    const element = printRef.current;
+    const canvas = await html2canvas(element, {
+      scale: 2,
+    });
+    const data = canvas.toDataURL('image/png');
 
+    const pdf = new jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: 'a4',
+    });
+
+
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+
+    const imgProps = pdf.getImageProperties(data);
+    const imgWidth = imgProps.width;
+    const imgHeight = imgProps.height;
+
+    const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+
+
+    const width = imgWidth * ratio;
+    const height = imgHeight * ratio;
+
+
+    pdf.addImage(data, 'PNG', 0, 0, width, height);
+    pdf.save('download.pdf');
+  };
   
   return (
-    <div className="w-screen h-screen bg-zinc-800">
+    <div className="w-screen bg-zinc-800">
       <div className="w-[100%] h-[40px] box-gradient flex justify-center items-center"></div>
-      <div className="flex justify-center mt-[40px]  gap-20">
+      <div className="flex justify-center mt-[40px]  gap-5">
         <div className="">
           <form onSubmit={handleSubmit}>
             <label
@@ -108,8 +142,11 @@ const page = () => {
             </div>
           </form>
         </div>
-        <div>
+        <div className="flex flex-col justify-start items-start gap-2">
+          <button onClick={handleSavePdf} className=" box-gradient text-zinc-50 p-1 rounded-lg ">Save as Pdf</button>
+          <div ref={printRef}>
           <Cv1 user={objectUser} object={objectGPT} colors={colors} />
+          </div>
         </div>
       </div>
     </div>
@@ -117,6 +154,13 @@ const page = () => {
     };
     
     export default page;
+
+
+
+
+
+
+
 
 const objectModel = {
   objective: "",
