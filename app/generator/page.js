@@ -6,6 +6,7 @@ import { getSession } from "next-auth/react";
 import '../../app/globals.css';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import NavBar from "../components/NavBar";
 
 const page = () => {
   const printRef = useRef();
@@ -17,6 +18,8 @@ const page = () => {
   const [objectUser, setObjectUser] = useState(userModel);
   const [objectGPT, setObjectGPT] = useState(objectModel);
   const [loading, setLoading] = React.useState(false);
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,12 +36,12 @@ const page = () => {
       if (response.ok) {
         const responsed = JSON.parse(await response.json());
         setObjectGPT(responsed);
-        console.log("API Response:", responsed); // Debug log
+        console.log("API Response:", responsed);
       } else {
-        console.error("Error fetching data"); // Debug error
+        console.error("Error fetching data");
       }
     } catch (error) {
-      console.error("Error:", error); // Debug error
+      console.error("Error:", error);
     }
     setLoading(false);
   };
@@ -109,7 +112,7 @@ const page = () => {
   
   return (
     <div className="w-screen bg-zinc-800">
-      <div className="w-[100%] h-[40px] box-gradient flex justify-center items-center"></div>
+      <NavBar />
       <div className="flex justify-center mt-[40px]  gap-5">
         <div className="">
           <form onSubmit={handleSubmit}>
@@ -137,15 +140,19 @@ const page = () => {
                 type={"submit"}
                 disabled={loading}
               >
-                {loading ? "Aguenta os cavalos..." : "Generate"}
+                {loading ? "Gimme a second..." : "Generate"}
               </button>
             </div>
           </form>
         </div>
-        <div className="flex flex-col justify-start items-start gap-2">
-          <button onClick={handleSavePdf} className=" box-gradient text-zinc-50 p-1 rounded-lg ">Save as Pdf</button>
+        <div className="flex flex-col justify-start items-start gap-2 mb-22">
+          <div className="w-[794px] flex justify-between">
+            <button onClick={handleSavePdf} className=" box-gradient text-zinc-50 p-1 rounded-lg ">Save as Pdf</button>
+            <button className=" box-gradient text-zinc-50 p-1 rounded-lg ">Edit Profile</button>
+          </div>
+          
           <div ref={printRef}>
-          <Cv1 user={objectUser} object={objectGPT} colors={colors} />
+            <Cv1 user={objectUser} object={objectGPT} colors={colors} />
           </div>
         </div>
       </div>

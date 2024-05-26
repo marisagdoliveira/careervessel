@@ -14,16 +14,16 @@ export async function POST(req) {
   }
 
   try {
-    // Decode base64 image data
+
     const base64Data = img.replace(/^data:image\/\w+;base64,/, '');
     const binaryData = Buffer.from(base64Data, 'base64');
 
-    // Write binary data to file
+
     const fileName = `${userId}.jpg`;
     const filePath = path.join(uploadDir, fileName);
     fs.writeFileSync(filePath, binaryData);
 
-    // Update user image in database
+
     await connectMongoDB();
     let getUser = await User.findOne({ _id: userId });
     if (!getUser) {

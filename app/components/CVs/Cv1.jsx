@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdEmail, MdLocationOn, MdOutlinePhoneIphone } from "react-icons/md";
 import { FaLinkedinIn } from "react-icons/fa";
 import FileUploadComponent from '../FileUploadComponent';
@@ -9,14 +9,16 @@ const Cv1 = (props) => {
     const object = props.object
     const user = props.user
 
-
     const [userPic, setUserPic] = useState(user.img || null);
-
+    useEffect(() => {
+        // Update userPic state when user.img changes
+        setUserPic(user.img || null);
+    }, [user.img]);
     const handleUploadSuccess = (fileName) => {
         setUserPic(fileName);
     };
+    
 
-    console.log(colors)
   return (
     <div className={`w-[794px] h-[1123px] bg-zinc-100 flex`} >
 
@@ -26,7 +28,7 @@ const Cv1 = (props) => {
                   {userPic ? (
                       <img src={`/assets/userPics/${userPic}`} alt="User Pic" className="w-[170px] h-[170px] rounded-full object-cover" />
                   ) : (
-                      <FileUploadComponent onUploadSuccess={handleUploadSuccess} />
+                          <FileUploadComponent onUploadSuccess={handleUploadSuccess} />
                   )}
                     
             </div>

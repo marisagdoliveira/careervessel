@@ -56,3 +56,23 @@ input {
   transition-duration: 0.8s;
   transition-timing-function: cubic-bezier(.76, .17, .26, .96);
 }
+
+.file-upload-container {
+  position: relative;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  background-color: #f0f0f0;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.custom-file-upload:hover {
+  background-color: #e0e0e0;
+}
+
+.hidden-input {
+  display: none;
+}
