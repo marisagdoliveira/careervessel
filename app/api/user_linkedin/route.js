@@ -17,14 +17,14 @@ export async function PATCH(req) {
       return NextResponse.json({ message: "User not found." }, { status: 404 });
     }
 
-    // Update the user's location
+
     getUser.linkedin = linkedin;
     await getUser.save();
 
     return NextResponse.json({ user: getUser.linkedin }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
-      { message: "An error occured while updating the user LinkedIn." },
+      { message: "An error occurred while updating the user LinkedIn." },
       { status: 500 }
     );
   }

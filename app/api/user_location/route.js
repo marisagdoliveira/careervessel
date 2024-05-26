@@ -27,7 +27,7 @@ export async function PATCH(req) {
     return NextResponse.json({ user: getUser }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
-      { message: "An error occured while updating the user location." },
+      { message: "An error occurred while updating the user location." },
       { status: 500 }
     );
   }

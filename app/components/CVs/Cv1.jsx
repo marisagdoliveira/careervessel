@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { MdEmail, MdLocationOn, MdOutlinePhoneIphone } from "react-icons/md";
 import { FaLinkedinIn } from "react-icons/fa";
+import FileUploadComponent from '../FileUploadComponent';
 
 
 const Cv1 = (props) => {
     const colors = props.colors
     const object = props.object
     const user = props.user
+
+
+    const [userPic, setUserPic] = useState(user.img || null);
+
+    const handleUploadSuccess = (fileName) => {
+        setUserPic(fileName);
+    };
+
     console.log(colors)
   return (
     <div className={`w-[794px] h-[1123px] bg-zinc-100 flex`} >
@@ -14,7 +23,12 @@ const Cv1 = (props) => {
 
         <div className='w-[300px] h-[100%] px-5 py-7 flex flex-col gap-7 items-center' style={{backgroundColor: colors.color1}}>
             <div className="w-[170px] h-[170px] rounded-full bg-zinc-100 flex justify-center items-center">
-                    <img src="/assets/cv1.png"/>
+                  {userPic ? (
+                      <img src={`/assets/userPics/${userPic}`} alt="User Pic" className="w-[170px] h-[170px] rounded-full object-cover" />
+                  ) : (
+                      <FileUploadComponent onUploadSuccess={handleUploadSuccess} />
+                  )}
+                    
             </div>
             <h1 className='text-white p-2 w-full text-lg font-semibold text-center' style={{backgroundColor: colors.color2}}>Contact</h1>
             <Contact userprop={user}/>

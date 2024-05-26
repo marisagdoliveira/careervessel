@@ -1,30 +1,41 @@
-import User from "@/models/user";
+import fs from 'fs';
+import path from 'path';
+import { connectMongoDB } from '@/lib/mongodb';
+import User from '@/models/user';
 import { NextResponse } from "next/server";
-import { connectMongoDB } from "@/lib/mongodb";
 
+const uploadDir = path.join(process.cwd(), 'public/assets/userPics');
 
-export async function PATCH(req) {
-  console.log("test ");
+export async function POST(req) {
+  const { userId, img } = await req.json();
+
+  if (!userId || !img) {
+    return NextResponse.json({ message: "Missing userId or image data in request body" }, { status: 400 });
+  }
+
   try {
-    await connectMongoDB();
-    const body = await req.json();
-    const { userId, img } = body
+    // Decode base64 image data
+    const base64Data = img.replace(/^data:image\/\w+;base64,/, '');
+    const binaryData = Buffer.from(base64Data, 'base64');
 
+    // Write binary data to file
+    const fileName = `${userId}.jpg`;
+    const filePath = path.join(uploadDir, fileName);
+    fs.writeFileSync(filePath, binaryData);
+
+    // Update user image in database
+    await connectMongoDB();
     let getUser = await User.findOne({ _id: userId });
-    console.log(getUser.status);
     if (!getUser) {
-      return NextResponse.json({ message: "User not found." }, { status: 404 });
+      return NextResponse.json({ message: 'User not found.' }, { status: 404 });
     }
 
-    // Update the user's location
-    getUser.img = img;
+    getUser.img = fileName;
     await getUser.save();
 
-    return NextResponse.json({ user: getUser.img }, { status: 201 });
+    return NextResponse.json({ fileName }, { status: 200 });
   } catch (error) {
-    return NextResponse.json(
-      { message: "An error occured while updating the user image." },
-      { status: 500 }
-    );
+    console.error('Error uploading file:', error);
+    return NextResponse.json({ message: 'Error uploading file' }, { status: 500 });
   }
 }
