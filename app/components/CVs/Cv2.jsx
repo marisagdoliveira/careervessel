@@ -19,8 +19,8 @@ const Cv2 = (props) => {
     };
     
     return (
-        <div className="w-full h-full bg-gradient-to-r from-green-400 to-blue-500 flex justify-center items-center p-5">
-          <div className="bg-white shadow-lg rounded-lg w-[794px] h-[1123px] p-10 flex flex-col gap-8">
+        <div style={{ background: `linear-gradient(to right, ${colors.color1}, ${colors.color2})` }} className={`w-full h-full bg-gradient-to-r flex justify-center items-center p-[20px] rounded-md`}>
+          <div className="bg-white shadow-lg rounded-lg w-[754px] h-[983px] p-5 flex flex-col gap-8 rounded-md">
             <div className="flex items-center gap-5">
             <div className="w-[170px] h-[170px] rounded-full bg-zinc-100 flex justify-center items-center">
                   {userPic ? (
@@ -65,7 +65,7 @@ const Section = ({ title, bgColor, children }) => (
     </div>
   );
   const Contact = ({ user }) => (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col mt-2 gap-3">
       <div className="flex items-center gap-3">
         <MdEmail />
         <p>{user.email}</p>
@@ -87,7 +87,7 @@ const Section = ({ title, bgColor, children }) => (
 
 const Experience = ({object}) => {
     const experiences = object.experience
-    return <div className='flex flex-col gap-3 w-[100%]'>
+    return <div className='flex flex-col gap-3 mt-2 w-[100%]'>
         
         {experiences.map((experience, key) => {
             return <div key={key} className='flex items-center space-between gap-1 w-[100%] text-left'>
@@ -101,7 +101,7 @@ const Experience = ({object}) => {
 }
 
 const Skills = ({object}) => {
-    return <div className='flex flex-col gap-3 w-[100%]'>
+    return <div className='flex flex-col gap-3 mt-2 w-[100%]'>
         {object.skills.map((skill, key) => {
             return <div key={key} className={`w-[100%] flex items-center space-between gap-${key*5} text-left`} >
                 <p key={key} className='text-left mr-5'>{skill}</p>
@@ -124,7 +124,7 @@ const Name = ({userprop, objectprop}) => {
 }
 
 const Education = ({object}) => {
-    return <div className='flex flex-col gap-3 w-[100%]'>
+    return <div className='flex flex-col gap-3 mt-2 w-[100%]'>
         {object.education.map((education, key) => {
             return <div key={key} className='flex items-center space-between gap-14 w-[100%] text-left'>
                 <p className='font-bold text-sm w-[100%]'>{education.course}</p>

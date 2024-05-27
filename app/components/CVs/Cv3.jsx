@@ -19,8 +19,8 @@ const Cv3 = (props) => {
     };
     
     return (
-    <div className="w-full h-full bg-gray-100 flex justify-center items-center p-5">
-    <div className="bg-white shadow-lg rounded-lg w-[794px] h-[1123px] p-10 flex flex-col gap-8">
+    <div className="w-full h-full bg-gray-100 flex justify-center items-center p-[20px] rounded-md">
+    <div className="bg-white shadow-lg rounded-lg w-[754px] h-[983px] p-[20px] flex flex-col gap-8">
       <div className="flex flex-col items-center">
       <div className="w-[170px] h-[170px] rounded-full bg-zinc-100 flex justify-center items-center">
                   {userPic ? (
@@ -63,7 +63,8 @@ const Section = ({ title, bgColor, children }) => (
     </div>
   );
   const Contact = ({ user }) => (
-    <div className="flex flex-col gap-3">
+    <div className="flex justify-around mt-2 gap-3">
+        <div className="flex flex-col mt-2 gap-3">
       <div className="flex items-center gap-3">
         <MdEmail />
         <p>{user.email}</p>
@@ -72,6 +73,8 @@ const Section = ({ title, bgColor, children }) => (
         <MdOutlinePhoneIphone />
         <p>{user.phone}</p>
       </div>
+      </div>
+      <div className="flex flex-col mt-2 gap-3">
       <div className="flex items-center gap-3">
         <FaLinkedinIn />
         <p>{user.linkedin}</p>
@@ -80,12 +83,13 @@ const Section = ({ title, bgColor, children }) => (
         <MdLocationOn />
         <p>{user.location}</p>
       </div>
+      </div>
     </div>
   );
 
 const Experience = ({object}) => {
     const experiences = object.experience
-    return <div className='flex flex-col gap-3 w-[100%]'>
+    return <div className='flex flex-col mt-2 gap-1 w-[100%]'>
         
         {experiences.map((experience, key) => {
             return <div key={key} className='flex items-center space-between gap-1 w-[100%] text-left'>
@@ -99,7 +103,7 @@ const Experience = ({object}) => {
 }
 
 const Skills = ({object}) => {
-    return <div className='flex flex-col gap-3 w-[100%]'>
+    return <div className='flex flex-col gap-1 mt-2 w-[100%]'>
         {object.skills.map((skill, key) => {
             return <div key={key} className={`w-[100%] flex items-center space-between gap-${key*5} text-left`} >
                 <p key={key} className='text-left mr-5'>{skill}</p>
@@ -122,7 +126,7 @@ const Name = ({userprop, objectprop}) => {
 }
 
 const Education = ({object}) => {
-    return <div className='flex flex-col gap-3 w-[100%]'>
+    return <div className='flex flex-col gap-1 mt-2 w-[100%]'>
         {object.education.map((education, key) => {
             return <div key={key} className='flex items-center space-between gap-14 w-[100%] text-left'>
                 <p className='font-bold text-sm w-[100%]'>{education.course}</p>
@@ -141,7 +145,7 @@ const Bio = ({object}) => {
 }
 
 const Tasks= ({object}) => {
-    return <div className='flex flex-col gap-3 w-[100%]'>
+    return <div className='flex flex-col gap-3 mt-2 w-[100%]'>
         {object.tasks.map((task, key) => {
             return <div key={key} className={`w-[100%] flex items-start justify-start gap-4`} >
                 <p className='font-bold'>{key + 1}</p>

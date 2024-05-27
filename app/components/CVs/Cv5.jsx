@@ -19,8 +19,8 @@ const Cv5 = (props) => {
     };
     
     return (
-        <div className={`w-[794px] h-[1123px] bg-zinc-100 flex`} >
-        <div className='mt-10 ml-5 mr-5 w-[480px]'>
+        <div className={`w-[794px] h-[1123px] bg-zinc-100 flex rounded-md`} >
+        <div className='mt-10 ml-5 mr-5 w-[480px] rounded-md'>
             <div style={{color: colors.color2}} className='flex flex-col gap-5'>
             <Name userprop={user} objectprop={object}/>
             <h1 className='text-white p-2 mt-[23px] w-full text-lg font-semibold text-right' style={{backgroundColor: colors.color2}}>About me</h1>
@@ -33,7 +33,7 @@ const Cv5 = (props) => {
 
         </div>
 
-        <div className='w-[300px] h-[100%] px-5 py-7 flex flex-col gap-7 items-center' style={{backgroundColor: colors.color1}}>
+        <div className='w-[300px] h-[100%] px-5 py-7 flex flex-col gap-7 items-center rounded-md' style={{backgroundColor: colors.color1}}>
         <div className="w-[170px] h-[170px] rounded-full bg-zinc-100 flex justify-center items-center">
                   {userPic ? (
                       <img src={`/assets/userPics/${userPic}`} alt="User Pic" className="w-[170px] h-[170px] rounded-full object-cover" />
@@ -94,7 +94,7 @@ const Experience = ({object}) => {
     return <div className='flex flex-col gap-3 w-[100%]'>
         
         {experiences.map((experience, key) => {
-            return <div key={key} className='flex items-center space-between gap-1 w-[100%] text-left'>
+            return <div key={key} className='flex items-center space-between gap-1 w-[100%] text-right'>
                 <p className='font-bold text-sm w-[50%] '>{experience.date}</p>
                 <p className='font-bold w-[100%] text-right'>{experience.role}</p>
                 <p className='text-sm text-right w-[100%]'>{experience.company}</p>

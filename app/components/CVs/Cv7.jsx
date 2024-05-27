@@ -4,7 +4,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import FileUploadComponent from '../FileUploadComponent';
 
 
-const Cv4 = (props) => {
+const Cv7 = (props) => {
     const colors = props.colors
     const object = props.object
     const user = props.user
@@ -19,52 +19,41 @@ const Cv4 = (props) => {
     };
     
     return (
-        <div className="w-[794px] h-[1123px] bg-zinc-100 grid grid-cols-2 grid-rows-4 gap-5 p-5 rounded-md">    
-        <div className='col-span-2 p-5 rounded-lg rounded-md' style={{ backgroundColor: colors.color1}}>
-            <div className='flex justify-between gap-10'>
-        <div className="w-[170px] h-[170px] rounded-full object-cover  flex justify-center items-center" style={{ backgroundColor: colors.color1}}>
-                  {userPic ? (
-                      <img src={`/assets/userPics/${userPic}`} alt="User Pic" className="w-[170px] h-[170px] rounded-full object-cover" />
-                  ) : (
-                          <FileUploadComponent onUploadSuccess={handleUploadSuccess} />
-                  )}
+        <div className={`w-[794px] h-[1123px] bg-zinc-100 flex rounded-md`}>
+            <div className='w-[300px] h-[100%] px-5 py-7 flex flex-col gap-7 items-center rounded-md' style={{ backgroundColor: colors.color1 }}>
+                <div className="w-[170px] h-[170px] rounded-full bg-zinc-100 flex justify-center items-center">
+                    {userPic ? (
+                        <img src={`/assets/userPics/${userPic}`} alt="User Pic" className="w-[170px] h-[170px] rounded-full object-cover" />
+                    ) : (
+                        <FileUploadComponent onUploadSuccess={handleUploadSuccess} />
+                    )}
+                </div>
+                <h1 className='text-white p-2 w-full text-lg font-semibold text-center rounded-lg' style={{ backgroundColor: colors.color2 }}>Contact</h1>
+                <Contact userprop={user} />
+                <h1 className='text-white p-2 w-full text-lg font-semibold text-center rounded-lg' style={{ backgroundColor: colors.color2 }}>Experience</h1>
+                <Experience object={object} />
+                <h1 className='text-white p-2 w-full text-lg font-semibold text-center rounded-lg' style={{ backgroundColor: colors.color2 }}>Skills</h1>
+                <Skills object={object} />
+            </div>
+
+            <div className='mt-10 ml-5 mr-5 w-[480px]'>
+                <div style={{ color: colors.color2 }} className='flex flex-col gap-5 '>
+                    <Name userprop={user} objectprop={object} />
+                    <h1 className='text-white p-2 mt-[40px] w-full text-lg font-semibold text-right rounded-lg' style={{ backgroundColor: colors.color2 }}>Education</h1>
+                    <Education object={object} />
+                    <h1 className='text-white p-2 mt-[-5px] w-full text-lg font-semibold text-right rounded-lg' style={{ backgroundColor: colors.color2 }}>Tasks</h1>
+                    <Tasks object={object} />
+                    <h1 className='text-white p-2 mt-[23px] w-full text-lg font-semibold text-right  rounded-lg' style={{ backgroundColor: colors.color2 }}>About me</h1>
+                    <Bio object={object} />
                     
+                </div>
             </div>
-            <div className='flex flex-col'>
-            <Name userprop={user} objectprop={object}/>
-            
-            <Bio object={object}/>
-        </div></div></div>
-        <div className='row-span-2 bg-zinc-300 p-5 rounded-lg' >
-        <h1 className='text-white p-2 w-full text-lg font-semibold text-center rounded-lg ' style={{backgroundColor: colors.color2}}>Contact</h1>
-            <Contact userprop={user}/>
-            <div className='col-span-1'>
-            <h1 className='text-white mb-4 p-2 mt-[20px] mb-[10px] p-2 w-full text-lg font-semibold text-center rounded-lg' style={{backgroundColor: colors.color2}}>Skills</h1>
-            <Skills object={object}/>
-            </div>
-            </div>
-        <div className='col-span-1  bg-zinc-300  p-5 rounded-lg'>
-        <h1 className='text-white p-2 mt-[5px]  p-2 w-full text-lg font-semibold text-center rounded-lg' style={{backgroundColor: colors.color2}}>Education</h1>
-            <Education object={object}/>
         </div>
-       
-       
-        <div className='col-span-1  p-5 rounded-lg' style={{ backgroundColor: colors.color1}}>
-        <h1 className='text-white p-2 w-full text-lg font-semibold text-center rounded-lg' style={{backgroundColor: colors.color2}}>Experience</h1>
-            <Experience object={object}/>
-        </div>
-       
-       
-        <div className='col-span-1  p-5 rounded-lg ' style={{ backgroundColor: colors.color1}}>
-        <h1 className='text-white    p-2 w-full text-lg font-semibold text-center rounded-lg' style={{backgroundColor: colors.color2}}>Tasks</h1>
-            <Tasks object={object}/>
-        </div>
-    </div>
 );
 };
   
 
-export default Cv4
+export default Cv7
 
 const Section = ({ title, bgColor, children }) => (
     <div className="w-full">
@@ -74,7 +63,7 @@ const Section = ({ title, bgColor, children }) => (
   );
   const Contact = ({userprop}) => {
     const user1 = userprop
-    return <div className='flex flex-col gap-3 my-4 w-[100%] rounded-md'> 
+    return <div className='flex flex-col gap-3 w-[100%]'> 
                 <div className='flex items-center space-between gap-3'>
                     <MdEmail/>                                                                                                      
                     <p>{user1.email}</p>
@@ -96,7 +85,7 @@ const Section = ({ title, bgColor, children }) => (
 
 const Experience = ({object}) => {
     const experiences = object.experience
-    return <div className='flex flex-col mt-5 gap-3 w-[100%]'>
+    return <div className='flex flex-col gap-3 w-[100%]'>
         
         {experiences.map((experience, key) => {
             return <div key={key} className='flex items-center space-between gap-1 w-[100%] text-left'>
@@ -110,7 +99,7 @@ const Experience = ({object}) => {
 }
 
 const Skills = ({object}) => {
-    return <div className='flex flex-col mt-5 gap-3 w-[100%]'>
+    return <div className='flex flex-col gap-3 w-[100%]'>
         {object.skills.map((skill, key) => {
             return <div key={key} className={`w-[100%] flex items-center space-between gap-${key*5} text-left`} >
                 <p key={key} className='text-left mr-5'>{skill}</p>
@@ -133,7 +122,7 @@ const Name = ({userprop, objectprop}) => {
 }
 
 const Education = ({object}) => {
-    return <div className='flex flex-col mt-5 gap-3 w-[100%]'>
+    return <div className='flex flex-col gap-3 w-[100%]'>
         {object.education.map((education, key) => {
             return <div key={key} className='flex items-center space-between gap-14 w-[100%] text-left'>
                 <p className='font-bold text-sm w-[100%]'>{education.course}</p>
@@ -147,12 +136,12 @@ const Education = ({object}) => {
 
 const Bio = ({object}) => {
     return <div>
-        <p className='text-base w-[500px] mt-2 text-justify'>{object.objective}</p>
+        <p className='text-base mt-2 text-justify'>{object.objective}</p>
         </div>
 }
 
 const Tasks= ({object}) => {
-    return <div className='flex flex-col my-5 gap-3 w-[100%]'>
+    return <div className='flex flex-col gap-3 w-[100%]'>
         {object.tasks.map((task, key) => {
             return <div key={key} className={`w-[100%] flex items-start justify-start gap-4`} >
                 <p className='font-bold'>{key + 1}</p>

@@ -20,11 +20,11 @@ const Cv1 = (props) => {
     
 
   return (
-    <div className={`w-[794px] h-[1123px] bg-zinc-100 flex`} >
+    <div className={`w-[794px] h-[1123px] bg-zinc-100 flex rounded-md`} >
 
 
-        <div className='w-[300px] h-[100%] px-5 py-7 flex flex-col gap-7 items-center' style={{backgroundColor: colors.color1}}>
-            <div className="w-[170px] h-[170px] rounded-full bg-zinc-100 flex justify-center items-center">
+        <div className='w-[300px] h-[100%] px-5 py-7 flex flex-col gap-7 items-center rounded-md' style={{backgroundColor: colors.color1}}>
+            <div className="w-[170px] h-[170px] rounded-full flex justify-center items-center rounded-md">
                   {userPic ? (
                       <img src={`/assets/userPics/${userPic}`} alt="User Pic" className="w-[170px] h-[170px] rounded-full object-cover" />
                   ) : (
