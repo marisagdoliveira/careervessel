@@ -2,6 +2,11 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Cv1 from "../components/CVs/Cv1";
+import Cv2 from "../components/CVs/Cv2";
+import Cv3 from "../components/CVs/Cv3";
+import Cv4 from "../components/CVs/Cv4";
+import Cv5 from "../components/CVs/Cv5";
+import Cv6 from "../components/CVs/Cv6";
 import { getSession } from "next-auth/react";
 import '../../app/globals.css';
 import html2canvas from 'html2canvas';
@@ -111,7 +116,7 @@ const page = () => {
   };
   
   return (
-    <div className="w-screen bg-zinc-800">
+    <div className="w-screen h-[100%] pb-[100px] bg-zinc-800">
       <NavBar />
       <div className="flex justify-center mt-[40px]  gap-5">
         <div className="">
@@ -152,7 +157,7 @@ const page = () => {
           </div>
           
           <div ref={printRef}>
-            <Cv1 user={objectUser} object={objectGPT} colors={colors} />
+            <Cv6 user={objectUser} object={objectGPT} colors={colors} />
           </div>
         </div>
       </div>
