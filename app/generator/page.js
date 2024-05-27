@@ -1,6 +1,10 @@
 "use client";
+
+
 import { TiArrowSortedDown } from "react-icons/ti";
 import { RiCloseCircleFill } from "react-icons/ri";
+import Download from '../../public/assets/download.svg'
+import Edit from '../../public/assets/edit.svg'
 import React, { useState, useEffect, useRef } from "react";
 import Cv1 from "../components/CVs/Cv1";
 import Cv2 from "../components/CVs/Cv2";
@@ -16,6 +20,7 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import NavBar from "../components/NavBar";
 import Chatbot from "../components/Chatbot";
+import Link from "next/link";
 
 const page = () => {
   const printRef = useRef();
@@ -124,8 +129,9 @@ const page = () => {
   return (
     <div className="w-screen h-[100%] pb-[100px] bg-zinc-800 ">
       <NavBar />
-      <div className="flex justify-center mt-[40px]  gap-5 overflow-x-hidden">
-        <div className="flex flex-col items-end">
+      <div className="flex justify-center mt-[100px] text-center gap-10 overflow-x-hidden">
+        <div className="flex flex-col items-center">
+          
           <form onSubmit={handleSubmit}>
             <label
               htmlFor={"story"}
@@ -133,6 +139,7 @@ const page = () => {
             >
               Share your story with us!
             </label>
+            <div className="box-gradient p-1 rounded-md focus:border-2 mt-5 mb-5 focus:border-purple-500">
             <textarea
               rows={10}
               onChange={(e) => setdescription(e.target.value)}
@@ -142,30 +149,56 @@ const page = () => {
                 "For a more detailed and accurate CV, don't forget to specify your: \n\n  - Experience (where you've been, your roles and when you did it);\n  - Education (what you studied, your degree, your school and when you did it); \n  - Objective (what you're looking for). \n\nIf there's something you want to add or change when the CV's generated, you can edit the information to your liking."
               }
               className={
-                "w-full h-[350px] text-md  text-black p-5 my-3  border-2 border-purple-500 rounded-md outline-0"
+                "w-[28vw] h-[17vw] text-sm bg-zinc-950 text-white p-5   rounded-md outline-0"
               }
             />
             <style jsx>{`
               #story::placeholder {
                 color: rgba(150, 150, 150, 0.7); /* Zinc color with opacity */
+            
               }
-            `}</style>
-            <div className={"text-right "}>
+            `}</style></div>
+            <div className="text-center" >
               <button
                 className={
-                  "inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm rounded-md text-white bg-purple-500 hover:bg-purple disabled:bg-purple-200 transition ease-in-out duration-150 disabled:cursor-not-allowed"
+                  "inline-flex items-center px-14 py-1.5 font-semibold leading-6 text-lg rounded-md text-white box-gradient hover:bg-purple disabled:bg-purple-200 transition ease-in-out duration-150 disabled:cursor-not-allowed"
                 }
                 type={"submit"}
                 disabled={loading}
               >
-                {loading ? "Gimme a second..." : "Generate"}
+                {loading ? "Gimme a second..." : "Generate your CV"}
               </button>
             </div>
           </form>
+          <div className="flex justify-end w-[100%] mt-40">
+          <div className="flex justify-center rounded-lg bg-white py-1 px-3">
+            <button onClick={handleSavePdf} className=" text-gradient text-zinc-50 gap-2 flex justify-center items-center font-bold flex-row">
+              <p>PDF</p>
+             
+             <Download className="text-gradient"/>
+            </button>
+
+            </div>
+          </div>
+                
+        </div>
 
 
+
+        
+        <div className="flex flex-col justify-start items-start gap-2">
+          <div className="w-[794px] flex justify-between justify-center ">
+            
+
+            <Link href={"/Profile"} className="flex gap-2 items-center text-gradient font-semibold text-zinc-50 py-1 px-3  "> 
+            <p className="hover:underline">Edit Contact Details</p>
+            <Edit />
+            </Link>
+          
+          
+          <div className="mb-[40px]">
           {!colorsMenu && (
-          <div className="mt-[20px] rounded flex items-center gap-5 w-fit p-2 bg-white transition-all">
+          <div className="absolute right-[355px] top-[135px] rounded-lg mb-2 flex items-center gap-5 w-fit p-2 bg-white transition-all">
           <div onClick={(e) => setColorsMenu(true)} className="rounded-full cursor-pointer size-6" style={{ background: `linear-gradient(to bottom right, ${colors.color1}, ${colors.color2})` }}></div>
           <p onClick={(e) => setColorsMenu(true)} className="font-semibold text-gradient cursor-pointer text-2xl">Select Color</p>
           <TiArrowSortedDown onClick={(e) => setColorsMenu(true)} className="text-gradient cursor-pointer"/>
@@ -175,7 +208,7 @@ const page = () => {
 
           {colorsMenu && (
           
-          <div className="mt-[20px] w-[15vw] rounded p-2 bg-white">
+          <div className="absolute right-[355px] top-[135px] w-[15vw] mb-2 rounded-lg p-2 bg-white">
             <div className=" flex justify-end">
             <RiCloseCircleFill className="text-slate-400 cursor-pointer mb-1" onClick={(e) => setColorsMenu(false)}/>
             </div>
@@ -194,17 +227,14 @@ const page = () => {
           </div>
           </div>
           
-          )}
-        </div>
-
-
-
-        
-        <div className="flex flex-col justify-start items-start gap-2 mb-22">
-          <div className="w-[794px] flex justify-between">
-            <button onClick={handleSavePdf} className=" box-gradient text-zinc-50 p-1 rounded-lg ">Save as Pdf</button>
-            <button className=" box-gradient text-zinc-50 p-1 rounded-lg ">Edit Profile</button>
+          )}</div>
+          
           </div>
+
+
+
+
+
           <div className="flex gap-4">
               <div ref={printRef}>
                 {selectedCv === "Cv1" &&(<Cv1 user={objectUser} object={objectGPT} colors={colors} />)}

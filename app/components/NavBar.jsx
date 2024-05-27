@@ -5,8 +5,8 @@ import React from 'react'
 const NavBar = () => {
   return (
     <div>
-          <div className="w-[100%] h-[3vw] p-1 box-gradient flex space-between">
-              <Link href="/dashboard"><CVLogo style={{ width: "100%", height: "100%" }} className="ml-[20px]" /></Link>
+          <div className="w-[100%] h-[3vw] p-[4px] box-gradient-nav flex space-between">
+              <Link href="/dashboard"><CVLogo style={{ width: "100%", height: "4vw" }} className="ml-[20px] mt-2" /></Link>
           </div>
     </div>
   )
