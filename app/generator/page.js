@@ -15,6 +15,7 @@ import '../../app/globals.css';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import NavBar from "../components/NavBar";
+import Chatbot from "../components/Chatbot";
 
 const page = () => {
   const printRef = useRef();
@@ -121,9 +122,9 @@ const page = () => {
   };
   
   return (
-    <div className="w-screen h-[100%] pb-[100px] bg-zinc-800">
+    <div className="w-screen h-[100%] pb-[100px] bg-zinc-800 ">
       <NavBar />
-      <div className="flex justify-center mt-[40px]  gap-5">
+      <div className="flex justify-center mt-[40px]  gap-5 overflow-x-hidden">
         <div className="flex flex-col items-end">
           <form onSubmit={handleSubmit}>
             <label
@@ -205,30 +206,31 @@ const page = () => {
             <button className=" box-gradient text-zinc-50 p-1 rounded-lg ">Edit Profile</button>
           </div>
           <div className="flex gap-4">
-          <div ref={printRef}>
-            {selectedCv === "Cv1" &&(<Cv1 user={objectUser} object={objectGPT} colors={colors} />)}
-            {selectedCv === "Cv2" &&(<Cv2 user={objectUser} object={objectGPT} colors={colors} />)}
-            {selectedCv === "Cv3" &&(<Cv3 user={objectUser} object={objectGPT} colors={colors} />)}
-            {selectedCv === "Cv4" &&(<Cv4 user={objectUser} object={objectGPT} colors={colors} />)}
-            {selectedCv === "Cv5" &&(<Cv5 user={objectUser} object={objectGPT} colors={colors} />)}
-            {selectedCv === "Cv6" &&(<Cv6 user={objectUser} object={objectGPT} colors={colors} />)}
-            {selectedCv === "Cv7" &&(<Cv7 user={objectUser} object={objectGPT} colors={colors} />)}
-            {selectedCv === "Cv8" &&(<Cv8 user={objectUser} object={objectGPT} colors={colors} />)}
+              <div ref={printRef}>
+                {selectedCv === "Cv1" &&(<Cv1 user={objectUser} object={objectGPT} colors={colors} />)}
+                {selectedCv === "Cv2" &&(<Cv2 user={objectUser} object={objectGPT} colors={colors} />)}
+                {selectedCv === "Cv3" &&(<Cv3 user={objectUser} object={objectGPT} colors={colors} />)}
+                {selectedCv === "Cv4" &&(<Cv4 user={objectUser} object={objectGPT} colors={colors} />)}
+                {selectedCv === "Cv5" &&(<Cv5 user={objectUser} object={objectGPT} colors={colors} />)}
+                {selectedCv === "Cv6" &&(<Cv6 user={objectUser} object={objectGPT} colors={colors} />)}
+                {selectedCv === "Cv7" &&(<Cv7 user={objectUser} object={objectGPT} colors={colors} />)}
+                {selectedCv === "Cv8" &&(<Cv8 user={objectUser} object={objectGPT} colors={colors} />)}
+              </div>
+              <div className="bg-white flex flex-col items-center gap-10 p-10 rounded-md">
+                <p className="text-gradient font-semibold text-4xl">Layout</p>
+              <div className="flex flex-col gap-4 h-[800px] overflow-auto ">
+              <img src={`/assets/cvPics/Cv1.png`} onClick={(e) => setSelectedCv("Cv1")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv2.png`} onClick={(e) => setSelectedCv("Cv2")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv3.png`} onClick={(e) => setSelectedCv("Cv3")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv4.png`} onClick={(e) => setSelectedCv("Cv4")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv5.png`} onClick={(e) => setSelectedCv("Cv5")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv6.png`} onClick={(e) => setSelectedCv("Cv6")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv7.png`} onClick={(e) => setSelectedCv("Cv7")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv8.png`} onClick={(e) => setSelectedCv("Cv8")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              </div>
+            </div>
           </div>
-          <div className="bg-white flex flex-col items-center gap-10 p-10 rounded-md">
-            <p className="text-gradient font-semibold text-4xl">Layout</p>
-          <div className="flex flex-col gap-4 h-[800px] overflow-auto ">
-          <img src={`/assets/cvPics/Cv1.png`} onClick={(e) => setSelectedCv("Cv1")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-          <img src={`/assets/cvPics/Cv2.png`} onClick={(e) => setSelectedCv("Cv2")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-          <img src={`/assets/cvPics/Cv3.png`} onClick={(e) => setSelectedCv("Cv3")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-          <img src={`/assets/cvPics/Cv4.png`} onClick={(e) => setSelectedCv("Cv4")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-          <img src={`/assets/cvPics/Cv5.png`} onClick={(e) => setSelectedCv("Cv5")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-          <img src={`/assets/cvPics/Cv6.png`} onClick={(e) => setSelectedCv("Cv6")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-          <img src={`/assets/cvPics/Cv7.png`} onClick={(e) => setSelectedCv("Cv7")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-          <img src={`/assets/cvPics/Cv8.png`} onClick={(e) => setSelectedCv("Cv8")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-          </div>
-          </div>
-          </div>
+          <Chatbot />
         </div>
       </div>
     </div>
