@@ -36,14 +36,38 @@ export async function PATCH(req) {
   try {
     await connectMongoDB();
     const body = await req.json();
-    const { userId, name } = body;
+    const { userId, name, email, password, linkedin, phone, location } = body;
 
     const getUser = await User.findOne({ _id: userId });
-    console.log(getUser.status);
+    console.log(getUser);
+    console.log(email)
     if (!getUser) {
       return NextResponse.json({ message: "User not found." }, { status: 404 });
     }
-    getUser.name = name;
+    if (name) {
+      getUser.name = name;
+    }
+    
+    if (email) {
+      getUser.email = email;
+    }
+    
+    if (password) {
+      getUser.password = password;
+    }
+    
+    if (linkedin) {
+      getUser.linkedin = linkedin;
+    }
+    
+    if (phone) {
+      getUser.phone = phone;
+    }
+    
+    if (location) {
+      getUser.location = location;
+    }
+
     await getUser.save();
 
     return NextResponse.json({ user: getUser }, { status: 201 });
@@ -51,5 +75,3 @@ export async function PATCH(req) {
     return NextResponse.json({ message: "An error occured while updating the user name." }, { status: 500 });
   }
 }
-
-

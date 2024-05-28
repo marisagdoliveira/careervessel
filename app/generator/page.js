@@ -22,6 +22,8 @@ import jsPDF from 'jspdf';
 import NavBar from "../components/NavBar";
 import Chatbot from "../components/Chatbot";
 import Link from "next/link";
+import LinkedinSearch from "../components/Linkedin";
+
 
 const page = () => {
   const printRef = useRef();
@@ -130,12 +132,17 @@ const page = () => {
   
   return (
     <div className="relative">
-      <div className="absolute top-[-20px] bg-transparent pointer-events-none" style={{ width: '100vw', zIndex: 0 }}>
-  <Vshape style={{ width: '100%', height: '100%' }} />
+      <div
+        className="absolute bg-transparent pointer-events-none "
+        style={{ width: "100vw", zIndex: 0, top: "-220px" }}
+      >
+        <Vshape style={{ width: "100%", height: "100%" }} />
 </div>
-    <div className="w-screen h-[100%] pb-[100px] bg-zinc-800 " style={{ zIndex: 1}}>
+    <div className="w-screen h-[100vw] pb-[100px] bg-zinc-800 " style={{ zIndex: 1}}>
       
-      <NavBar />
+      <NavBar user={objectUser} className="mb-40"/>
+      {objectGPT.keywords[0].length > 0 && (<LinkedinSearch objectGPT={objectGPT} />)}
+      
       <div className="flex justify-center mt-[100px] text-left gap-4 overflow-x-hidden">
         <div className="flex flex-col items-center ">
           
@@ -331,6 +338,7 @@ const objectModel = {
   tasks: [
    
   ],
+  keywords: ["", "", "", "", ""]
 };
 
 const userModel = {

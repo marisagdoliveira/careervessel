@@ -10,6 +10,7 @@ export default function RegisterForm({ handlesSlide }){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
 
     const router = useRouter();
@@ -17,10 +18,15 @@ export default function RegisterForm({ handlesSlide }){
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!name || !email || !password) {
+        if (!name || !email || !password || !confirmPassword) {
             setError("All fields are necessary.");
             return;
-      }
+          }
+      
+          if (password !== confirmPassword) {
+            setError("Passwords do not match.");
+            return;
+          }
 
 
       try {
@@ -80,7 +86,8 @@ export default function RegisterForm({ handlesSlide }){
             <form onSubmit={handleSubmit} className="flex flex-col items-center gap-5">
                 <input onChange={e => setName(e.target.value)} onClick={e => setError("")} type="text" placeholder="Full Name" />
                 <input onChange={e => setEmail(e.target.value)} onClick={e => setError("")} type="text" placeholder="Email" />
-                <input onChange={e => setPassword(e.target.value)} type="password" placeholder="Password" />
+                <input onChange={e => setPassword(e.target.value)}  type="password" placeholder="Password" />
+                <input onChange={e => setConfirmPassword(e.target.value)}  type="password" placeholder="Confirm Password" />
                 <button className="align-center w-[8vw] h-[2.5vw] text-[1vw] box-gradient py-2 rounded-lg
             cursor-pointer text-white">Submit</button>
 

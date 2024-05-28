@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { FaFileUpload } from "react-icons/fa";
 import '../../app/globals.css';
+import Upload from "../../public/assets/upload.svg"
 
 const FileUploadComponent = ({ onUploadSuccess }) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const { data: session } = useSession();
+
 
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
@@ -45,13 +46,13 @@ const FileUploadComponent = ({ onUploadSuccess }) => {
 
     return (
         <div className="file-upload-container flex flex-col gap-2">
-            <label className="custom-file-upload flex justify-center">
+            <label className="flex flex-col items-center justify-center">
                 
                 <input type="file" onChange={handleFileChange} className="hidden-input" />
-                <div className='flex justify-center'>
-                    <FaFileUpload style={{ color: "#555555", width: "30px", height: "30px", marginTop: "10px" }} />
+                <div className='flex justify-center cursor-pointer'>
+                    <Upload style={{ color: "#999999", width: "20px", height: "20px" }} />
                     </div>
-                <span className='text-gradient'>Choose file</span>
+                <span className='text-gradient text-sm font-base cursor-pointer'>Choose file</span>
             </label>
             <div className='flex flex-col justify-center items-center'>
                 <button onClick={handleUpload}>
