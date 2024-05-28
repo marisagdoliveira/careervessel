@@ -35,28 +35,28 @@ const Cv4 = (props) => {
             
             <Bio object={object}/>
         </div></div></div>
-        <div className='row-span-2 bg-zinc-300 p-5 rounded-lg' >
-        <h1 className='text-white p-2 w-full text-lg font-semibold text-center rounded-lg ' style={{backgroundColor: colors.color2}}>Contact</h1>
+        <div className='row-span-2 bg-zinc-300 p-2 rounded-lg' >
+        <h1 className='text-white p-1 w-full text-lg font-semibold text-center rounded-lg ' style={{backgroundColor: colors.color2}}>Contact</h1>
             <Contact userprop={user}/>
             <div className='col-span-1'>
-            <h1 className='text-white mb-4 p-2 mt-[20px] mb-[10px] p-2 w-full text-lg font-semibold text-center rounded-lg' style={{backgroundColor: colors.color2}}>Skills</h1>
+            <h1 className='text-white mb-4 p-1 mt-[10px] mb-[5px] p-2 w-full text-lg font-semibold text-center rounded-lg' style={{backgroundColor: colors.color2}}>Skills</h1>
             <Skills object={object}/>
             </div>
             </div>
-        <div className='col-span-1  bg-zinc-300  p-5 rounded-lg'>
-        <h1 className='text-white p-2 mt-[5px]  p-2 w-full text-lg font-semibold text-center rounded-lg' style={{backgroundColor: colors.color2}}>Education</h1>
+        <div className='col-span-1  bg-zinc-300  p-2 rounded-lg'>
+        <h1 className='text-white p-1 mt-[5px] p-1 w-full text-lg font-semibold text-center rounded-lg' style={{backgroundColor: colors.color2}}>Education</h1>
             <Education object={object}/>
         </div>
        
        
-        <div className='col-span-1  p-5 rounded-lg' style={{ backgroundColor: colors.color1}}>
-        <h1 className='text-white p-2 w-full text-lg font-semibold text-center rounded-lg' style={{backgroundColor: colors.color2}}>Experience</h1>
+        <div className='col-span-1  p-2 rounded-lg' style={{ backgroundColor: colors.color1}}>
+        <h1 className='text-white p-1 w-full text-lg font-semibold text-center rounded-lg' style={{backgroundColor: colors.color2}}>Experience</h1>
             <Experience object={object}/>
         </div>
        
        
-        <div className='col-span-1  p-5 rounded-lg ' style={{ backgroundColor: colors.color1}}>
-        <h1 className='text-white    p-2 w-full text-lg font-semibold text-center rounded-lg' style={{backgroundColor: colors.color2}}>Tasks</h1>
+        <div className='row-span-2  p-2 rounded-lg ' style={{ backgroundColor: colors.color1}}>
+        <h1 className='text-white    p-1 w-full text-lg font-semibold text-center rounded-lg' style={{backgroundColor: colors.color2}}>Tasks</h1>
             <Tasks object={object}/>
         </div>
     </div>
@@ -74,7 +74,7 @@ const Section = ({ title, bgColor, children }) => (
   );
   const Contact = ({userprop}) => {
     const user1 = userprop
-    return <div className='flex flex-col gap-3 my-4 w-[100%] rounded-md'> 
+    return <div className='flex flex-col gap-1 my-2 w-[100%] rounded-md'> 
                 <div className='flex items-center space-between gap-3'>
                     <MdEmail/>                                                                                                      
                     <p>{user1.email}</p>

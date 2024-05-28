@@ -2,6 +2,7 @@ import React from "react";
 
 import { UseState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const getKeywords = (query, objecGPT) => {
   //string[]
@@ -36,6 +37,7 @@ const LinkedinSearch = ({ objecGPT }) => {
         />
         <button type="submit">Search</button>
       </form>
+      
     </div>
   );
 };

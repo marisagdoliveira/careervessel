@@ -16,7 +16,7 @@ input {
   background: linear-gradient(to bottom right, #9208C2, #309CFF);
 }
 .box-gradient-nav {
-  background: linear-gradient(15deg, transparent 30%, rgba(48, 156, 255, 1) 60%, rgba(146, 8, 194, 1));
+  background: linear-gradient(15deg, transparent 30%, rgba(48, 156, 255, 1) 50%, rgba(146, 8, 194, 1));
 }
 
 

@@ -5,6 +5,7 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import { RiCloseCircleFill } from "react-icons/ri";
 import Download from '../../public/assets/download.svg'
 import Edit from '../../public/assets/edit.svg'
+import Vshape from '../../public/assets/bg-v-shape.svg'
 import React, { useState, useEffect, useRef } from "react";
 import Cv1 from "../components/CVs/Cv1";
 import Cv2 from "../components/CVs/Cv2";
@@ -34,6 +35,7 @@ const page = () => {
   const [objectUser, setObjectUser] = useState(userModel);
   const [objectGPT, setObjectGPT] = useState(objectModel);
   const [loading, setLoading] = React.useState(false);
+
 
 
 
@@ -127,15 +129,20 @@ const page = () => {
   };
   
   return (
-    <div className="w-screen h-[100%] pb-[100px] bg-zinc-800 ">
+    <div className="relative">
+      <div className="absolute top-[-20px] bg-transparent pointer-events-none" style={{ width: '100vw', zIndex: 0 }}>
+  <Vshape style={{ width: '100%', height: '100%' }} />
+</div>
+    <div className="w-screen h-[100%] pb-[100px] bg-zinc-800 " style={{ zIndex: 1}}>
+      
       <NavBar />
-      <div className="flex justify-center mt-[100px] text-center gap-10 overflow-x-hidden">
-        <div className="flex flex-col items-center">
+      <div className="flex justify-center mt-[100px] text-left gap-4 overflow-x-hidden">
+        <div className="flex flex-col items-center ">
           
           <form onSubmit={handleSubmit}>
             <label
               htmlFor={"story"}
-              className={"text-lg font-bold text-purple-400"}
+              className={"text-lg font-bold text-white text-left"}
             >
               Share your story with us!
             </label>
@@ -149,7 +156,7 @@ const page = () => {
                 "For a more detailed and accurate CV, don't forget to specify your: \n\n  - Experience (where you've been, your roles and when you did it);\n  - Education (what you studied, your degree, your school and when you did it); \n  - Objective (what you're looking for). \n\nIf there's something you want to add or change when the CV's generated, you can edit the information to your liking."
               }
               className={
-                "w-[28vw] h-[17vw] text-sm bg-zinc-950 text-white p-5   rounded-md outline-0"
+                "w-[27vw] h-[19vw] text-sm bg-zinc-950 text-white p-5   rounded-md outline-0"
               }
             />
             <style jsx>{`
@@ -190,17 +197,28 @@ const page = () => {
           <div className="w-[794px] flex justify-between justify-center ">
             
 
-            <Link href={"/Profile"} className="flex gap-2 items-center text-gradient font-semibold text-zinc-50 py-1 px-3  "> 
-            <p className="hover:underline">Edit Contact Details</p>
+          <Link href="/profile" className="flex gap-2 items-center text-gradient font-semibold text-zinc-50 py-1 px-3  cursor-pointer"> 
+            <p>Edit Contact Details</p>
             <Edit />
             </Link>
           
           
-          <div className="mb-[40px]">
+
+          
+          </div>
+
+
+
+
+
+          <div className="flex gap-3 mt-2">
+
+              <div className="relative">
+          <div className="absolute mb-[10px] right-0 top-[-40px]">
           {!colorsMenu && (
-          <div className="absolute right-[355px] top-[135px] rounded-lg mb-2 flex items-center gap-5 w-fit p-2 bg-white transition-all">
-          <div onClick={(e) => setColorsMenu(true)} className="rounded-full cursor-pointer size-6" style={{ background: `linear-gradient(to bottom right, ${colors.color1}, ${colors.color2})` }}></div>
-          <p onClick={(e) => setColorsMenu(true)} className="font-semibold text-gradient cursor-pointer text-2xl">Select Color</p>
+          <div className=" rounded-lg mb-2 flex items-center gap-2 w-fit p-1 bg-white transition-all">
+          <div onClick={(e) => setColorsMenu(true)} className="rounded-full cursor-pointer size-4" style={{ background: `linear-gradient(to bottom right, ${colors.color1}, ${colors.color2})` }}></div>
+          <p onClick={(e) => setColorsMenu(true)} className="font-semibold text-gradient cursor-pointer text-lg">Select Color</p>
           <TiArrowSortedDown onClick={(e) => setColorsMenu(true)} className="text-gradient cursor-pointer"/>
           </div>)}
 
@@ -208,7 +226,7 @@ const page = () => {
 
           {colorsMenu && (
           
-          <div className="absolute right-[355px] top-[135px] w-[15vw] mb-2 rounded-lg p-2 bg-white">
+          <div className="w-[15vw] absolute right-0 rounded-lg p-1 bg-white">
             <div className=" flex justify-end">
             <RiCloseCircleFill className="text-slate-400 cursor-pointer mb-1" onClick={(e) => setColorsMenu(false)}/>
             </div>
@@ -228,14 +246,9 @@ const page = () => {
           </div>
           
           )}</div>
-          
-          </div>
 
 
 
-
-
-          <div className="flex gap-4">
               <div ref={printRef}>
                 {selectedCv === "Cv1" &&(<Cv1 user={objectUser} object={objectGPT} colors={colors} />)}
                 {selectedCv === "Cv2" &&(<Cv2 user={objectUser} object={objectGPT} colors={colors} />)}
@@ -246,22 +259,24 @@ const page = () => {
                 {selectedCv === "Cv7" &&(<Cv7 user={objectUser} object={objectGPT} colors={colors} />)}
                 {selectedCv === "Cv8" &&(<Cv8 user={objectUser} object={objectGPT} colors={colors} />)}
               </div>
-              <div className="bg-white flex flex-col items-center gap-10 p-10 rounded-md">
+              </div>
+              <div className="bg-white flex flex-col items-center gap-10 p-5 rounded-md">
                 <p className="text-gradient font-semibold text-4xl">Layout</p>
               <div className="flex flex-col gap-4 h-[800px] overflow-auto ">
-              <img src={`/assets/cvPics/Cv1.png`} onClick={(e) => setSelectedCv("Cv1")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-              <img src={`/assets/cvPics/Cv2.png`} onClick={(e) => setSelectedCv("Cv2")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-              <img src={`/assets/cvPics/Cv3.png`} onClick={(e) => setSelectedCv("Cv3")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-              <img src={`/assets/cvPics/Cv4.png`} onClick={(e) => setSelectedCv("Cv4")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-              <img src={`/assets/cvPics/Cv5.png`} onClick={(e) => setSelectedCv("Cv5")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-              <img src={`/assets/cvPics/Cv6.png`} onClick={(e) => setSelectedCv("Cv6")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-              <img src={`/assets/cvPics/Cv7.png`} onClick={(e) => setSelectedCv("Cv7")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
-              <img src={`/assets/cvPics/Cv8.png`} onClick={(e) => setSelectedCv("Cv8")} alt="User Pic" className="w-[170px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv1.png`} onClick={(e) => setSelectedCv("Cv1")} alt="User Pic" className="w-[120px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv2.png`} onClick={(e) => setSelectedCv("Cv2")} alt="User Pic" className="w-[120px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv3.png`} onClick={(e) => setSelectedCv("Cv3")} alt="User Pic" className="w-[120px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv4.png`} onClick={(e) => setSelectedCv("Cv4")} alt="User Pic" className="w-[120px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv5.png`} onClick={(e) => setSelectedCv("Cv5")} alt="User Pic" className="w-[120px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv6.png`} onClick={(e) => setSelectedCv("Cv6")} alt="User Pic" className="w-[120px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv7.png`} onClick={(e) => setSelectedCv("Cv7")} alt="User Pic" className="w-[120px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
+              <img src={`/assets/cvPics/Cv8.png`} onClick={(e) => setSelectedCv("Cv8")} alt="User Pic" className="w-[120px] rounded-md border-2 border-transparent hover:border-3 hover:border-purple-600 rounded-sm object-cover shadow-md shadow-bl mr-5 cursor-pointer" />
               </div>
             </div>
           </div>
           <Chatbot />
         </div>
+      </div>
       </div>
     </div>
     );
