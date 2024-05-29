@@ -19,10 +19,10 @@ const Cv3 = (props) => {
     };
     
     return (
-    <div className="w-full h-full bg-gray-100 flex justify-center items-center p-[20px] rounded-md">
+    <div className="w-full h-full bg-gray-100 flex justify-center items-center p-[20px] rounded-md leading-tight" contentEditable="true">
     <div className="bg-white shadow-lg rounded-lg w-[754px] h-[983px] p-[20px] flex flex-col gap-8">
       <div className="flex flex-col items-center">
-      <div className="w-[170px] h-[170px] rounded-full bg-zinc-100 flex justify-center items-center">
+      <div className="w-[170px] h-[170px] rounded-full bg-zinc-100 flex justify-center items-center" contentEditable="false">
                   {userPic ? (
                       <img src={`/assets/userPics/${userPic}`} alt="User Pic" className="w-[170px] h-[170px] rounded-full object-cover" />
                   ) : (
@@ -41,12 +41,19 @@ const Cv3 = (props) => {
         <Section title="Experience" bgColor={colors.color1}>
           <Experience object={object} />
         </Section>
-        <Section title="Skills" bgColor={colors.color1}>
-          <Skills object={object} />
-        </Section>
-        <Section title="Education" bgColor={colors.color1}>
-          <Education object={object} />
-        </Section>
+        
+        <div className="flex flex-row gap-5">
+              <div className="flex-1">
+                <Section title="Skills" bgColor={colors.color1}>
+                  <Skills object={object} />
+                </Section>
+              </div>
+              <div className="flex-1">
+                <Section title="Education" bgColor={colors.color1}>
+                  <Education object={object} />
+                </Section>
+              </div>
+              </div>
       </div>
     </div>
   </div>
@@ -102,18 +109,36 @@ const Experience = ({object}) => {
     </div>
 }
 
-const Skills = ({object}) => {
-    return <div className='flex flex-col gap-1 mt-2 w-[100%]'>
-        {object.skills.map((skill, key) => {
-            return <div key={key} className={`w-[100%] flex items-center space-between gap-${key*5} text-left`} >
-                <p key={key} className='text-left mr-5'>{skill}</p>
-                    <div className='w-full h-3 bg-zinc-500'>
-                       
-                    </div>
-                </div>
-        })}
+const Skills = ({ object }) => {
+  const arr = [];
+  for (let i = 0; i < object.skills.length; i++) {
+      arr.push(Math.floor(Math.random() * (120 - 60 + 1) + 60));
+    }
+    
+if (object.skills[0] !== "") {
+  return (
+    <div className="flex flex-col gap-3 w-[100%]">
+      {object.skills.map((skill, key) => {
+        
+        return (
+          <div key={key} className="flex-1 flex flex-row">
+            <div className="flex-1 flex flex-col">
+              <p key={key} className="text-left">
+                {skill}
+              </p>
+            </div>
+            <div className={`flex-1 flex items-center justify-start`}>
+              <div
+                className={`h-3 bg-zinc-500 ml-2 `}
+                style={{ width: `${arr[key]}%` }}
+              ></div>
+            </div>
+          </div>
+        );
+      })}
     </div>
-}
+  )} ;
+};
 
 
 const Name = ({userprop, objectprop}) => {

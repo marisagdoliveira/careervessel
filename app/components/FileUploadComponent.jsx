@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import '../../app/globals.css';
@@ -28,17 +29,20 @@ const FileUploadComponent = ({ onUploadSuccess }) => {
                     },
                     body: JSON.stringify({ userId, img: base64String }),
                 });
-
+                
                 if (response.ok) {
                     const data = await response.json();
-                    setResetPic(false)
                     onUploadSuccess(data.fileName);
+                    
+                
+                    
                 } else {
                     console.error('Upload failed', await response.json());
                 }
             } catch (error) {
                 console.error('Error uploading file:', error);
             }
+            window.location.reload();
         };
 
         reader.readAsDataURL(selectedFile); 
@@ -58,7 +62,7 @@ const FileUploadComponent = ({ onUploadSuccess }) => {
                 <button onClick={handleUpload}>
                     <div className='flex flex-col items-center'>
                        
-                        <p className='text-white box-gradient w-[100px] rounded-lg hover:border-purple-500'>Save</p>
+                        <p className='text-white box-gradient px-4 py-1 rounded-lg hover:border-purple-500'>Set Picture</p>
                     </div>
                 </button>
             </div>

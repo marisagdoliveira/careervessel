@@ -23,8 +23,8 @@ const NavBar = ({user}) => {
       <div className="flex justify-between items-center w-[100%] h-[3vw] p-4 box-gradient-nav ">
         <Link href="/dashboard">
           <CVLogo
-            style={{ width: "100%", height: "4.5vw" }}
-            className="ml-[20px] mt-12"
+            style={{ width: "100%", height: "5vw" }}
+            className="ml-[20px] mt-16"
           />
         </Link>
 
@@ -45,12 +45,12 @@ const NavBar = ({user}) => {
       <RiCloseCircleFill onClick={() => setDropdown(false)} className="text-slate-400 cursor-pointer mb-1"/>
             </div>
 
-            <Link href="/dashboard" className="text-gradient w-[8vw] text-white py-[2px] px-5 rounded-lg text-center border-2 border-transparent hover:border-2 hover:border-purple-300 hover:text-purple-400">Homepage</Link>
-            <Link href="/profile" className="text-gradient w-[8vw] text-white py-[2px] px-5 rounded-lg text-center border-2 border-transparent hover:border-2 hover:border-purple-300 hover:text-purple-400">Profile</Link>
-            <Link href="/generator" className="text-gradient w-[8vw] text-white py-[2px] px-5 rounded-lg text-center border-2 border-transparent hover:border-2 hover:border-purple-300 hover:text-purple-400">Generator</Link>
+            <Link href="/dashboard" className="text-gradient w-[8vw] text-white py-[2px] px-5 rounded-lg text-center border-2 border-transparent hover:border-2 hover:border-indigo-500 hover:text-purple-400">Homepage</Link>
+            <Link href="/profile" className="text-gradient w-[8vw] text-white py-[2px] px-5 rounded-lg text-center border-2 border-transparent hover:border-2 hover:border-indigo-500 hover:text-purple-400">Profile</Link>
+            <Link href="/generator" className="text-gradient w-[8vw] text-white py-[2px] px-5 rounded-lg text-center border-2 border-transparent hover:border-2 hover:border-indigo-500 hover:text-purple-400">Generator</Link>
             <button
               onClick={() => signOut()}
-              className=" py-[2px] px-5 w-[8vw] text-center rounded-lg cursor-pointer hover:border-2 hover:border-purple-300 hover:text-purple-400 text-white"
+              className=" py-[2px] px-5 w-[8vw] text-center rounded-lg cursor-pointer hover:border-2 hover:border-indigo-500 text-indigo-100 "
             >
               Log Out
             </button>

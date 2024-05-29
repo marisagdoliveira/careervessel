@@ -19,14 +19,14 @@ const Cv4 = (props) => {
     };
     
     return (
-        <div className="w-[794px] h-[1123px] bg-zinc-100 grid grid-cols-2 grid-rows-4 gap-5 p-5 rounded-md">    
+        <div className="w-[794px] h-[1123px] bg-zinc-100 grid grid-cols-2 grid-rows-4 gap-5 p-5 rounded-md leading-tight" contentEditable="true">    
         <div className='col-span-2 p-5 rounded-lg rounded-md' style={{ backgroundColor: colors.color1}}>
             <div className='flex justify-between gap-10'>
-        <div className="w-[170px] h-[170px] rounded-full object-cover  flex justify-center items-center" style={{ backgroundColor: colors.color1}}>
+        <div className="w-[170px] h-[170px] rounded-full object-cover  flex justify-center items-center" style={{ backgroundColor: colors.color1}} contentEditable="false">
                   {userPic ? (
                       <img src={`/assets/userPics/${userPic}`} alt="User Pic" className="w-[170px] h-[170px] rounded-full object-cover" />
                   ) : (
-                          <FileUploadComponent onUploadSuccess={handleUploadSuccess} />
+                          <FileUploadComponent  onUploadSuccess={handleUploadSuccess} />
                   )}
                     
             </div>
@@ -109,18 +109,36 @@ const Experience = ({object}) => {
     </div>
 }
 
-const Skills = ({object}) => {
-    return <div className='flex flex-col mt-5 gap-3 w-[100%]'>
+const Skills = ({ object }) => {
+    const arr = [];
+    for (let i = 0; i < object.skills.length; i++) {
+        arr.push(Math.floor(Math.random() * (120 - 60 + 1) + 60));
+      }
+      
+  if (object.skills[0] !== "") {
+    return (
+      <div className="flex flex-col gap-3 w-[100%]">
         {object.skills.map((skill, key) => {
-            return <div key={key} className={`w-[100%] flex items-center space-between gap-${key*5} text-left`} >
-                <p key={key} className='text-left mr-5'>{skill}</p>
-                    <div className='w-full h-3 bg-zinc-500'>
-                       
-                    </div>
-                </div>
+          
+          return (
+            <div key={key} className="flex-1 flex flex-row">
+              <div className="flex-1 flex flex-col">
+                <p key={key} className="text-left">
+                  {skill}
+                </p>
+              </div>
+              <div className={`flex-1 flex items-center justify-start`}>
+                <div
+                  className={`h-3 bg-zinc-500 ml-2 `}
+                  style={{ width: `${arr[key]}%` }}
+                ></div>
+              </div>
+            </div>
+          );
         })}
-    </div>
-}
+      </div>
+    )} ;
+  };
 
 
 const Name = ({userprop, objectprop}) => {
@@ -152,7 +170,7 @@ const Bio = ({object}) => {
 }
 
 const Tasks= ({object}) => {
-    return <div className='flex flex-col my-5 gap-3 w-[100%]'>
+    return <div className='flex flex-col my-3 gap-1 w-[100%] '>
         {object.tasks.map((task, key) => {
             return <div key={key} className={`w-[100%] flex items-start justify-start gap-4`} >
                 <p className='font-bold'>{key + 1}</p>

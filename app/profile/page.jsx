@@ -43,7 +43,7 @@ const page = () => {
   }, []);
 
   return (
-    <div className="relative w-screen h-[100vw] bg-zinc-800 overflow-hidden ">
+    <div className="relative w-screen h-[100vw] bg-zinc-900 overflow-hidden ">
       <div
         className="absolute bg-transparent pointer-events-none "
         style={{ width: "100vw", zIndex: 0, top: "-220px" }}
@@ -61,6 +61,7 @@ const page = () => {
               <h1 className="text-2xl text-white font-semibold">{objectUser.name}</h1>
               
               <div className="w-36 ">
+                
                 <UserPic user={objectUser} />
               </div>
               

@@ -89,7 +89,7 @@ const UpdateUserForm = (user) => {
       </label>
 
        <label className='flex flex-col items-center gap-2 mb-4'>
-        Phone
+        Phone Number
         <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} className='box-gradient rounded-2xl text-sm h-8 w-64 text-white text-center'/>
       </label>
        <label className='flex flex-col items-center gap-2 mb-4'>

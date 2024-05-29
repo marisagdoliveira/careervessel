@@ -19,14 +19,14 @@ const Cv2 = (props) => {
     };
     
     return (
-        <div style={{ background: `linear-gradient(to right, ${colors.color1}, ${colors.color2})` }} className={`w-full h-full bg-gradient-to-r flex justify-center items-center p-[20px] rounded-md`}>
+        <div style={{ background: `linear-gradient(to right, ${colors.color1}, ${colors.color2})` }} className={`w-full h-full bg-gradient-to-r flex justify-center items-center p-[20px] rounded-md leading-tight`} contentEditable="true">
           <div className="bg-white shadow-lg rounded-lg w-[754px] h-[983px] p-5 flex flex-col gap-8 rounded-md">
             <div className="flex items-center gap-5">
-            <div className="w-[170px] h-[170px] rounded-full bg-zinc-100 flex justify-center items-center">
+            <div className="w-[170px] h-[170px] rounded-full bg-zinc-100 flex justify-center items-center" contentEditable="false">
                   {userPic ? (
                       <img src={`/assets/userPics/${userPic}`} alt="User Pic" className="w-[170px] h-[170px] rounded-full object-cover" />
                   ) : (
-                          <FileUploadComponent onUploadSuccess={handleUploadSuccess} />
+                          <FileUploadComponent  onUploadSuccess={handleUploadSuccess} />
                   )}
                     
             </div>
@@ -100,18 +100,36 @@ const Experience = ({object}) => {
     </div>
 }
 
-const Skills = ({object}) => {
-    return <div className='flex flex-col gap-3 mt-2 w-[100%]'>
-        {object.skills.map((skill, key) => {
-            return <div key={key} className={`w-[100%] flex items-center space-between gap-${key*5} text-left`} >
-                <p key={key} className='text-left mr-5'>{skill}</p>
-                    <div className='w-full h-3 bg-zinc-500'>
-                       
-                    </div>
-                </div>
-        })}
+const Skills = ({ object }) => {
+  const arr = [];
+  for (let i = 0; i < object.skills.length; i++) {
+      arr.push(Math.floor(Math.random() * (120 - 60 + 1) + 60));
+    }
+    
+if (object.skills[0] !== "") {
+  return (
+    <div className="flex flex-col gap-3 w-[100%]">
+      {object.skills.map((skill, key) => {
+        
+        return (
+          <div key={key} className="flex-1 flex flex-row">
+            <div className="flex-1 flex flex-col">
+              <p key={key} className="text-left">
+                {skill}
+              </p>
+            </div>
+            <div className={`flex-1 flex items-center justify-start`}>
+              <div
+                className={`h-3 bg-zinc-500 ml-2 `}
+                style={{ width: `${arr[key]}%` }}
+              ></div>
+            </div>
+          </div>
+        );
+      })}
     </div>
-}
+  )} ;
+};
 
 
 const Name = ({userprop, objectprop}) => {

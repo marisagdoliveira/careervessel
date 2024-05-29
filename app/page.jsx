@@ -11,7 +11,7 @@ export default async function Home() {
   if (session) redirect("/dashboard");
 
   return (
-    <main className="bg-zinc-700 overflow-hidden">
+    <main className="bg-zinc-900 overflow-hidden">
       <HomePage />
       
     </main>
