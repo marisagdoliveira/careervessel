@@ -1,5 +1,5 @@
 import React from "react";
-
+import '../../app/globals.css';
 import Link from "next/link";
 
 const getKeywords = (objectGPT) => {
@@ -29,11 +29,11 @@ const LinkedinSearch = ({ objectGPT }) => {
 
   return (
     <div>
-      <div className="mt-6">
+      <div className="">
         <Link
           href={`https://www.linkedin.com/search/results/all/?keywords=${objectGPT.keywords[0]}`}
           handleSubmit={handleSubmit}
-          className="bg-purple-400 py-2 rounded-lg cursor-pointer text-white m-6 p-6"
+          className="border-2 border-indigo-500 hover:bg-indigo-900 hover:text-white py-2 rounded-lg cursor-pointer text-indigo-500 m-6 p-6"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -42,7 +42,7 @@ const LinkedinSearch = ({ objectGPT }) => {
         <Link
           href={`https://www.linkedin.com/search/results/all/?keywords=${objectGPT.keywords[1]}`}
           handleSubmit={handleSubmit}
-          className="bg-purple-400 py-2 rounded-lg cursor-pointer text-white m-6 p-6"
+          className="border-2 border-indigo-500 hover:bg-indigo-900 hover:text-white py-2 rounded-lg cursor-pointer text-indigo-500 m-6 p-6"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -51,7 +51,7 @@ const LinkedinSearch = ({ objectGPT }) => {
         <Link
           href={`https://www.linkedin.com/search/results/all/?keywords=${objectGPT.keywords[2]}`}
           handleSubmit={handleSubmit}
-          className="bg-purple-400 py-2 rounded-lg cursor-pointer text-white m-6 p-6"
+          className="border-2 border-indigo-500 hover:bg-indigo-900 hover:text-white py-2 rounded-lg cursor-pointer text-indigo-500 m-6 p-6"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -60,7 +60,7 @@ const LinkedinSearch = ({ objectGPT }) => {
         <Link
           href={`https://www.linkedin.com/search/results/all/?keywords=${objectGPT.keywords[3]}`}
           handleSubmit={handleSubmit}
-          className="bg-purple-400 py-2 rounded-lg cursor-pointer text-white m-6 p-6"
+          className="border-2 border-indigo-500 hover:bg-indigo-900 hover:text-white py-2 rounded-lg cursor-pointer text-indigo-500 m-6 p-6"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -69,7 +69,7 @@ const LinkedinSearch = ({ objectGPT }) => {
         <Link
           href={`https://www.linkedin.com/search/results/all/?keywords=${objectGPT.keywords[4]}`}
           handleSubmit={handleSubmit}
-          className="bg-purple-400 py-2 rounded-lg cursor-pointer text-white m-6 p-6"
+          className="border-2 border-indigo-500 hover:bg-indigo-900 hover:text-white py-2 rounded-lg cursor-pointer text-indigo-500 m-6 p-6"
           target="_blank"
           rel="noopener noreferrer"
         >

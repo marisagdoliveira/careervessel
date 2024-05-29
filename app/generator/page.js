@@ -6,6 +6,7 @@ import { RiCloseCircleFill } from "react-icons/ri";
 import Download from '../../public/assets/download.svg'
 import Edit from '../../public/assets/edit.svg'
 import Vshape from '../../public/assets/bg-v-shape.svg'
+import Add from '../../public/assets/add_button.svg'
 import React, { useState, useEffect, useRef } from "react";
 import Cv1 from "../components/CVs/Cv1";
 import Cv2 from "../components/CVs/Cv2";
@@ -140,9 +141,16 @@ const page = () => {
 </div>
     <div className="w-screen h-[100vw] pb-[100px] bg-zinc-800 " style={{ zIndex: 1}}>
       
-      <NavBar user={objectUser} className="mb-40"/>
-      {objectGPT.keywords[0].length > 0 && (<LinkedinSearch objectGPT={objectGPT} />)}
-      
+      <NavBar user={objectUser}/>
+      <div className="absolute top-[4vw] right-[13vw] text-sm text-left">
+        
+      {objectGPT.keywords[0].length > 0 && (
+  <div className="flex flex-col  gap-4 text-white  font-semibold">
+    <p>Start applying now!</p>
+    <LinkedinSearch objectGPT={objectGPT} className="transition-all duration-200" />
+  </div>
+)}
+      </div>
       <div className="flex justify-center mt-[100px] text-left gap-4 overflow-x-hidden">
         <div className="flex flex-col items-center ">
           
@@ -151,7 +159,7 @@ const page = () => {
               htmlFor={"story"}
               className={"text-lg font-bold text-white text-left"}
             >
-              Share your story with us!
+              Share your story with us:
             </label>
             <div className="box-gradient p-1 rounded-md focus:border-2 mt-5 mb-5 focus:border-purple-500">
             <textarea
@@ -184,8 +192,13 @@ const page = () => {
               </button>
             </div>
           </form>
-          <div className="flex justify-end w-[100%] mt-40">
+          <div className="flex flex-col items-end w-[100%] mt-20 gap-5">
+          <div className="flex flex-col items-center justify-center rounded-lg bg-white py-1 px-3">
+            <p className="text-gradient">Add to Library</p>
+              <Add />
+            </div>
           <div className="flex justify-center rounded-lg bg-white py-1 px-3">
+            
             <button onClick={handleSavePdf} className=" text-gradient text-zinc-50 gap-2 flex justify-center items-center font-bold flex-row">
               <p>PDF</p>
              
@@ -349,3 +362,10 @@ const userModel = {
   linkedin: "linkedin.com/in/johndoe",
   imgsrc: "/assets/cv1.png",
 };
+
+
+
+
+
+
+
