@@ -202,6 +202,10 @@ function mostracenas () {
                 library.map((a, key) => {
                   return (
                     <div key={key} className="relative size-24 shadow-black flex-shrink-0">
+                      {a.layout === "Cv1"? (
+                        <Cv1 user={objectUser} colors={a.colors}/>
+                      ):(
+                        <div className="absolute">
                       <img src={`/assets/cvPics/${a.layout}.png`} className="absolute w-[100px] h-[140px] shadow-lg rounded-md" />
                       <div className="absolute w-[100%] h-[140px] opacity-0 rounded-md  hover:bg-zinc-600/30 hover:opacity-100">
                         <div className="flex flex-col items-center justify-center gap-2 h-[100%]">
@@ -209,6 +213,7 @@ function mostracenas () {
                           <button onClick={() => handleDelete(key)} className="border-2 border-white text-white hover:bg-white hover:text-zinc-600 rounded-md px-2 py-1 text-sm"><HiOutlineTrash /></button>
                         </div>
                       </div>
+                      </div>)}
                     </div>
                   )
                 })

@@ -6,7 +6,6 @@ import FileUploadComponent from '../FileUploadComponent';
 
 const Cv1 = (props) => {
     const colors = props.colors
-    const object = props.object
     const user = props.user
 
     const [userPic, setUserPic] = useState(user.img || null);
@@ -33,7 +32,7 @@ const Cv1 = (props) => {
                     
             </div>
             <h1 className='text-white p-2 w-full text-lg font-semibold text-center' style={{backgroundColor: colors.color2}}>Contact</h1>
-            <Contact userprop={user}/>
+
             <h1 className='text-white p-2 w-full text-lg font-semibold text-center' style={{backgroundColor: colors.color2}}>Experience</h1>
 
             <h1 className='text-white p-2 w-full text-lg font-semibold text-center' style={{backgroundColor: colors.color2}}>Skills</h1>
@@ -43,13 +42,12 @@ const Cv1 = (props) => {
 
         <div className='mt-10 ml-5 mr-5 w-[480px]'>
             <div style={{color: colors.color2}} className='flex flex-col gap-5'>
-            <Name userprop={user} objectprop={object}/>
             <h1 className='text-white p-2 mt-[23px] w-full text-lg font-semibold text-right' style={{backgroundColor: colors.color2}}>About me</h1>
-     
+  
             <h1 className='text-white p-2 mt-[40px] w-full text-lg font-semibold text-right' style={{backgroundColor: colors.color2}}>Education</h1>
-      
+    
             <h1 className='text-white p-2 mt-[-5px] w-full text-lg font-semibold text-right' style={{backgroundColor: colors.color2}}>Tasks</h1>
-            
+
             </div>
 
         </div>
@@ -60,3 +58,29 @@ const Cv1 = (props) => {
 }
 
 export default Cv1
+
+const Contact = ({userprop}) => {
+    const user1 = userprop
+    return (
+      <div className="flex flex-col gap-3 w-[100%]">
+        <div className="flex items-center space-between gap-3">
+          <MdEmail />
+          <p>{user1.email}</p>
+        </div>
+        <div className="flex items-center space-between gap-3">
+          <MdOutlinePhoneIphone />
+          <p>{user1.phone}</p>
+        </div>
+        <div className="flex items-center space-between gap-3">
+          <FaLinkedinIn />
+          <p>{user1.linkedin}</p>
+        </div>
+        <div className="flex items-center space-between gap-3">
+          <MdLocationOn />
+          <p>{user1.location}</p>
+        </div>
+  
+      </div>
+    );                                                                                                        
+}
+
