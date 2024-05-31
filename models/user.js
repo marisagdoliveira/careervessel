@@ -30,8 +30,23 @@ const userSchema = new Schema({
         required: false
     },
     library: [{
-        type: Object,
-        required: false
+        layout: {
+            type: String,
+            required: false
+        },
+        objectgpt: {
+            type: Object,
+            required: false
+        },
+        colors: {
+            type: Object,
+            required: false
+        },
+        open: {
+            type: Boolean,
+            required: false,
+            default: false // Setting default to false
+        }
     }],
 }, { timestamps: true }
 );

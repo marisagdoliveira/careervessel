@@ -63,24 +63,27 @@ export default Cv1
 
 const Contact = ({userprop}) => {
     const user1 = userprop
-    return <div className='flex flex-col gap-3 w-[100%]'> 
-                <div className='flex items-center space-between gap-3'>
-                    <MdEmail/>                                                                                                      
-                    <p>{user1.email}</p>
-                </div>
-                <div className='flex items-center space-between gap-3'> 
-                <MdOutlinePhoneIphone/>                                                          
-                    <p>{user1.phone}</p>
-                </div>
-                <div className='flex items-center space-between gap-3'>
-                <FaLinkedinIn />                                                          
-                    <p>{user1.linkedin}</p>
-                </div>
-                <div className='flex items-center space-between gap-3'>
-                    <MdLocationOn/>
-                    <p>{user1.location}</p>
-                </div>
-    </div>                                                                                                        
+    return (
+      <div className="flex flex-col gap-3 w-[100%]">
+        <div className="flex items-center space-between gap-3">
+          <MdEmail />
+          <p>{user1.email}</p>
+        </div>
+        <div className="flex items-center space-between gap-3">
+          <MdOutlinePhoneIphone />
+          <p>{user1.phone}</p>
+        </div>
+        <div className="flex items-center space-between gap-3">
+          <FaLinkedinIn />
+          <p>{user1.linkedin}</p>
+        </div>
+        <div className="flex items-center space-between gap-3">
+          <MdLocationOn />
+          <p>{user1.location}</p>
+        </div>
+  
+      </div>
+    );                                                                                                        
 }
 
 const Experience = ({object}) => {
@@ -88,12 +91,22 @@ const Experience = ({object}) => {
     return <div className='flex flex-col gap-3 w-[100%]'>
         
         {experiences.map((experience, key) => {
-            return <div key={key} className='flex items-center space-between gap-1 w-[100%] text-left'>
-                <p className='font-bold text-sm w-[50%] '>{experience.date}</p>
-                <p className='font-bold w-[100%] text-right'>{experience.role}</p>
-                <p className='text-sm text-right w-[100%]'>{experience.company}</p>
-                
-            </div>
+            return (
+              <div
+                key={key}
+                className="flex items-center space-between gap-1 w-[100%] text-left"
+              >
+                <p className="font-bold text-sm w-[50%] text-center">
+                  {experience.date}
+                </p>
+                <p className="font-bold text-sm w-[100%] text-center">
+                  {experience.role}
+                </p>
+                <p className="text-sm text-center max-w-[100px]">
+                  {experience.company}
+                </p>
+              </div>
+            );
         })}
     </div>
 }

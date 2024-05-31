@@ -63,6 +63,10 @@ const page = () => {
     setLoading(false);
   };
 
+
+
+
+
   useEffect(() => {
     const fetchUserData = async () => {
       setLoading(true);
@@ -83,6 +87,48 @@ const page = () => {
         const userData = await response.json();
         console.log(userData.user);
         setObjectUser(userData.user);
+
+        
+
+
+        let key;
+        console.log("JIIIIIIIIIIIIRGE" + userData.user.library[0].open)
+      // for (let i = 0; i < userData.user.library.length-1; i++) {
+      //   if (userData.user.library[i].open === true) {
+      //     key = i
+      //   }
+      // }
+      key = userData.user.library.findIndex(e => e.open)
+      console.log("jiiiiiiiiir" + key + userData.user.library.length)
+      if (key >= userData.user.library.length) {
+        console.log("No open items found in the library.");
+        return;
+      }
+  
+      const response1 = await fetch("/api/close_cv", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: userData.user._id,
+        }),
+      });
+      
+      if (!response1.ok) {
+        throw new Error("Failed to edit library item");
+        
+      }
+      
+      if (response1.ok) {
+        const newUserData = await response1.json();
+          setSelectedCv(newUserData.user.library[key].layout);
+          setObjectGPT(newUserData.user.library[key].objectgpt);
+          setColors(newUserData.user.library[key].colors);
+      }
+      console.log("JIIIIIIIIIIIIRGE" + newUserData.user.library[6].open) // Corrected variable name
+      // Update objectGPT and colors directly
+     
       } catch (error) {
         console.error("Error fetching user data:", error.message);
       } finally {
@@ -95,7 +141,6 @@ const page = () => {
 
   const handleSaveToLibrary = async () => {
     const object = {
-      key: objectUser.library.length + 1,
       layout: selectedCv,
       colors: colors,
       objectgpt: objectGPT,
@@ -115,6 +160,8 @@ const page = () => {
           "Content-Type": "application/json",
         },
       });
+
+
 
       if (response.ok) {
         const responsed = await response.json();
@@ -157,7 +204,7 @@ const page = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative bg-zinc-900 h-[100vw]">
       <div
         className="absolute bg-transparent pointer-events-none "
         style={{ width: "100vw", zIndex: 0, top: "-220px" }}

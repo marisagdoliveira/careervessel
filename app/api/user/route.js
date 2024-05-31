@@ -75,3 +75,52 @@ export async function PATCH(req) {
     return NextResponse.json({ message: "An error occured while updating the user name." }, { status: 500 });
   }
 }
+
+
+
+export async function DELETE(req) {
+  console.log("test");
+  try {
+    await connectMongoDB();
+    const body = await req.json();
+    const { userId, key } = body;
+
+    // Ensure key is a number
+    const indexToRemove = Number(key);
+
+    if (isNaN(indexToRemove)) {
+      return NextResponse.json({ message: "Invalid key." }, { status: 400 });
+    }
+
+    console.log('Request Body:', body);
+    console.log('Index to Remove:', indexToRemove);
+
+    const getUser = await User.findOne({ _id: userId });
+    if (!getUser) {
+      return NextResponse.json({ message: "User not found." }, { status: 404 });
+    }
+
+    console.log('User Library Before:', getUser.library);
+
+    // Check if the index is within the bounds of the array
+    if (indexToRemove < 0 || indexToRemove >= getUser.library.length) {
+      return NextResponse.json({ message: "Index out of bounds." }, { status: 400 });
+    }
+
+    // Remove the item at the specified index
+    const newLibrary = getUser.library.filter((_, index) => index !== indexToRemove);
+    getUser.library = newLibrary;
+
+    console.log('User Library After:', getUser.library);
+
+    await getUser.save();
+
+    return NextResponse.json({ user: getUser }, { status: 200 });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json(
+      { message: "An error occurred while updating the user library item." },
+      { status: 500 }
+    );
+  }
+}

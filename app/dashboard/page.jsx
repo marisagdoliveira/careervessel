@@ -11,6 +11,8 @@ import UserPic from "../components/UserPic";
 import Generate from "../../public/assets/generatebutton.svg"
 import Gpt from "../../public/assets/gpticon.svg"
 import Powered from "../../public/assets/poweredby.svg"
+import { HiOutlineTrash } from "react-icons/hi2";
+import Edit from "../../public/assets/edit.svg";
 import Cv1 from "../components/CVs/Cv1";
 import Cv2 from "../components/CVs/Cv2";
 import Cv3 from "../components/CVs/Cv3";
@@ -19,8 +21,11 @@ import Cv5 from "../components/CVs/Cv5";
 import Cv6 from "../components/CVs/Cv6";
 import Cv7 from "../components/CVs/Cv7";
 import Cv8 from "../components/CVs/Cv8";
+import { useRouter } from "next/navigation";
+
 
 export default function Dashboard() {
+  const router = useRouter();
   const [loading, setLoading] = React.useState(false);
   const [objectUser, setObjectUser] = useState("");
   const [objectGPT, setObjectGPT] = useState(objectModel);
@@ -64,6 +69,75 @@ function mostracenas () {
     };
     fetchUserData();
   }, []);
+
+
+  const handleDelete = async (key) => {
+    setLoading(true);
+    try {
+      const response = await fetch('/api/user', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: objectUser._id,
+          key,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete library item");
+      }
+
+
+      
+
+      // Re-fetch user data to update the library state
+      const updatedResponse = await fetch(`/api/user?userId=${objectUser._id}`);
+      if (!updatedResponse.ok) {
+        throw new Error("Failed to fetch updated user data");
+      }
+      const updatedUserData = await updatedResponse.json();
+      setLibrary(updatedUserData.user.library || []);
+    } catch (error) {
+      console.error("Error deleting library item:", error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  const handleEdit = async (key) => {
+    setLoading(true);
+    try {
+      // Send PATCH request to toggle the "open" property
+      console.log(objectUser._id + "joooooooooooooooorge" + key)
+      const response = await fetch('/api/open_cv', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: objectUser._id,
+          key
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to edit library item");
+      }
+
+      // Redirect to the /generator page
+      router.push("/generator")
+    } catch (error) {
+      console.error("Error editing library item:", error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+
   return (
     <div className="relative w-screen h-[100vw] bg-zinc-900 overflow-hidden ">
       <div
@@ -123,16 +197,24 @@ function mostracenas () {
       <div>
         <div className="ml-32 text-white font-base text-2xl ">
             <p onClick={mostracenas} className="mb-5">Your Library</p>
-            <div className="bg-white rounded-lg p-5 flex gap-5 w-[600px] h-[180px] overflow-hidden">
-                {
-                    
+            <div className="bg-white rounded-lg p-5 flex gap-5 w-[600px] h-[180px] overflow-x-auto overflow-y-hidden">
+              {
                 library.map((a, key) => {
-                    return (
-                    <div key={key} className="size-24  shadow-black">
-                        <img img src={`/assets/cvPics/${a.layout}.png`} className="shadow-lg cursor-pointer"/>
+                  return (
+                    <div key={key} className="relative size-24 shadow-black flex-shrink-0">
+                      <img src={`/assets/cvPics/${a.layout}.png`} className="absolute w-[100px] h-[140px] shadow-lg rounded-md" />
+                      <div className="absolute w-[100%] h-[140px] opacity-0 rounded-md  hover:bg-zinc-600/30 hover:opacity-100">
+                        <div className="flex flex-col items-center justify-center gap-2 h-[100%]">
+                          <button onClick={() => handleEdit(key)} className="border-2 border-white text-white hover:bg-white hover:text-zinc-600 rounded-md px-2 py-1 text-sm"><Edit/></button>
+                          <button onClick={() => handleDelete(key)} className="border-2 border-white text-white hover:bg-white hover:text-zinc-600 rounded-md px-2 py-1 text-sm"><HiOutlineTrash /></button>
+                        </div>
+                      </div>
                     </div>
-                )})}
+                  )
+                })
+              }
             </div>
+
         </div>
       </div>
     </div>

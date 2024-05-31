@@ -95,12 +95,22 @@ const Experience = ({object}) => {
     return <div className='flex flex-col gap-3 w-[100%]'>
         
         {experiences.map((experience, key) => {
-            return <div key={key} className='flex items-center space-between gap-1 w-[100%] text-left'>
-                <p className='font-bold text-sm w-[50%] '>{experience.date}</p>
-                <p className='font-bold w-[100%] text-right'>{experience.role}</p>
-                <p className='text-sm text-right w-[100%]'>{experience.company}</p>
-                
-            </div>
+            return (
+              <div
+                key={key}
+                className="flex items-center space-between gap-1 w-[100%] text-left"
+              >
+                <p className="font-bold text-sm w-[50%] text-center">
+                  {experience.date}
+                </p>
+                <p className="font-bold text-sm w-[100%] text-center">
+                  {experience.role}
+                </p>
+                <p className="text-sm text-center max-w-[90px]">
+                  {experience.company}
+                </p>
+              </div>
+            );
         })}
     </div>
 }
@@ -146,18 +156,28 @@ const Name = ({userprop, objectprop}) => {
         </div>
 }
 
-const Education = ({object}) => {
-    return <div className='flex flex-col gap-3 w-[100%]'>
-        {object.education.map((education, key) => {
-            return <div key={key} className='flex items-center space-between gap-14 w-[100%] text-left'>
-                <p className='font-bold text-sm w-[100%]'>{education.course}</p>
-                <p className='font-bold text-right ml-[-25px] w-[25%]'>{education.school}</p>
-                <p className='text-sm text-right w-[25%]'>{education.date}</p>
-                
-            </div>
-        })}
+const Education = ({ object }) => {
+  return (
+    <div className="flex flex-col gap-3 w-[100%]">
+      {object.education.map((education, key) => {
+        return (
+          <div
+            key={key}
+            className="flex items-center space-between gap-14 w-[100%] text-left"
+          >
+            <p className="font-bold text-center text-sm w-[100%]">
+              {education.course}
+            </p>
+            <p className="font-bold text-center text-sm ml-[-25px] w-[100%]">
+              {education.school}
+            </p>
+            <p className="text-sm text-center w-[100%]">{education.date}</p>
+          </div>
+        );
+      })}
     </div>
-}
+  );
+};
 
 const Bio = ({object}) => {
     return <div>

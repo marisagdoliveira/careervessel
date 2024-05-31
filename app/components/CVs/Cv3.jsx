@@ -99,12 +99,22 @@ const Experience = ({object}) => {
     return <div className='flex flex-col mt-2 gap-1 w-[100%]'>
         
         {experiences.map((experience, key) => {
-            return <div key={key} className='flex items-center space-between gap-1 w-[100%] text-left'>
-                <p className='font-bold text-sm w-[50%] '>{experience.date}</p>
-                <p className='font-bold w-[100%] text-right'>{experience.role}</p>
-                <p className='text-sm text-right w-[100%]'>{experience.company}</p>
-                
-            </div>
+            return (
+              <div
+                key={key}
+                className="flex items-center space-between gap-1 w-[100%] text-left"
+              >
+                <p className="font-bold text-sm w-[40%] text-center">
+                  {experience.date}
+                </p>
+                <p className="font-bold text-sm w-[80%] text-center">
+                  {experience.role}
+                </p>
+                <p className="text-sm max-w-[20%] text-center">
+                  {experience.company}
+                </p>
+              </div>
+            );
         })}
     </div>
 }
@@ -154,9 +164,9 @@ const Education = ({object}) => {
     return <div className='flex flex-col gap-1 mt-2 w-[100%]'>
         {object.education.map((education, key) => {
             return <div key={key} className='flex items-center space-between gap-14 w-[100%] text-left'>
-                <p className='font-bold text-sm w-[100%]'>{education.course}</p>
-                <p className='font-bold text-right ml-[-25px] w-[25%]'>{education.school}</p>
-                <p className='text-sm text-right w-[25%]'>{education.date}</p>
+                <p className='font-bold text-center text-sm w-[100%]'>{education.course}</p>
+                <p className='font-bold text-sm text-center ml-[-25px] w-[25%]'>{education.school}</p>
+                <p className='text-sm text-center w-[25%]'>{education.date}</p>
                 
             </div>
         })}
