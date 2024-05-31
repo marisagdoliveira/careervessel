@@ -13,14 +13,14 @@ import Gpt from "../../public/assets/gpticon.svg"
 import Powered from "../../public/assets/poweredby.svg"
 import { HiOutlineTrash } from "react-icons/hi2";
 import Edit from "../../public/assets/edit.svg";
-import Cv1 from "../components/CVs/Cv1";
-import Cv2 from "../components/CVs/Cv2";
-import Cv3 from "../components/CVs/Cv3";
-import Cv4 from "../components/CVs/Cv4";
-import Cv5 from "../components/CVs/Cv5";
-import Cv6 from "../components/CVs/Cv6";
-import Cv7 from "../components/CVs/Cv7";
-import Cv8 from "../components/CVs/Cv8";
+import Cv1 from "../components/MiniCVs/Cv1";
+//import Cv2 from "../components/MiniCVs/Cv2";
+//import Cv3 from "../components/MiniCVs/Cv3";
+//import Cv4 from "../components/MiniCVs/Cv4";
+//import Cv5 from "../components/MiniCVs/Cv5";
+//import Cv6 from "../components/MiniCVs/Cv6";
+//import Cv7 from "../components/MiniCVs/Cv7";
+//import Cv8 from "../components/MiniCVs/Cv8";
 import { useRouter } from "next/navigation";
 
 
