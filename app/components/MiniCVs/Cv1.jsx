@@ -19,34 +19,34 @@ const Cv1 = (props) => {
     
 
   return (
-    <div className={`w-[794px] h-[1123px] bg-zinc-100 flex rounded-md leading-tight`} contentEditable="true">
+    <div className={`w-[100px] h-[140px] bg-zinc-200 flex rounded-md leading-tight`}>
 
 
-        <div className='w-[300px] h-[100%] px-5 py-7 flex flex-col gap-7 items-center rounded-md' style={{backgroundColor: colors.color1}}>
-            <div className="w-[170px] h-[170px] rounded-full flex justify-center items-center rounded-md" contentEditable="false">
+        <div className='w-[30%] h-[100%] flex flex-col gap-[5px] items-center rounded-md' style={{backgroundColor: colors.color1}}>
+            <div className="w-[20px] h-[20px] rounded-full flex justify-center items-center rounded-md" contentEditable="false">
                   {userPic ? (
-                      <img src={`/assets/userPics/${userPic}`} alt="User Pic" className="w-[170px] h-[170px] rounded-full object-cover" />
+                      <img src={`/assets/userPics/${userPic}`} alt="User Pic" className="w-[20px] h-[20px] rounded-full object-cover" />
                   ) : (
                           <FileUploadComponent  onUploadSuccess={handleUploadSuccess} />
                   )}
                     
             </div>
-            <h1 className='text-white p-2 w-full text-lg font-semibold text-center' style={{backgroundColor: colors.color2}}>Contact</h1>
+            <h1 className='text-white p-1 w-full  font-semibold text-center' style={{backgroundColor: colors.color2}}></h1>
 
-            <h1 className='text-white p-2 w-full text-lg font-semibold text-center' style={{backgroundColor: colors.color2}}>Experience</h1>
+            <h1 className='text-white p-1 w-full  font-semibold text-center' style={{backgroundColor: colors.color2}}></h1>
 
-            <h1 className='text-white p-2 w-full text-lg font-semibold text-center' style={{backgroundColor: colors.color2}}>Skills</h1>
+            <h1 className='text-white p-1 w-full  font-semibold text-center' style={{backgroundColor: colors.color2}}></h1>
 
         </div>
 
 
         <div className='mt-10 ml-5 mr-5 w-[480px]'>
-            <div style={{color: colors.color2}} className='flex flex-col gap-5'>
-            <h1 className='text-white p-2 mt-[23px] w-full text-lg font-semibold text-right' style={{backgroundColor: colors.color2}}>About me</h1>
+            <div style={{color: colors.color2}} className='flex flex-col gap-[10px]'>
+            <h1 className='text-white p-2 mt-[2%px] w-full text-lg font-semibold text-right' style={{backgroundColor: colors.color2}}></h1>
   
-            <h1 className='text-white p-2 mt-[40px] w-full text-lg font-semibold text-right' style={{backgroundColor: colors.color2}}>Education</h1>
+            <h1 className='text-white p-2 mt-[4%px] w-full text-lg font-semibold text-right' style={{backgroundColor: colors.color2}}></h1>
     
-            <h1 className='text-white p-2 mt-[-5px] w-full text-lg font-semibold text-right' style={{backgroundColor: colors.color2}}>Tasks</h1>
+            <h1 className='text-white p-2 mt-[-5%] w-full text-lg font-semibold text-right' style={{backgroundColor: colors.color2}}></h1>
 
             </div>
 
@@ -62,23 +62,8 @@ export default Cv1
 const Contact = ({userprop}) => {
     const user1 = userprop
     return (
-      <div className="flex flex-col gap-3 w-[100%]">
-        <div className="flex items-center space-between gap-3">
-          <MdEmail />
-          <p>{user1.email}</p>
-        </div>
-        <div className="flex items-center space-between gap-3">
-          <MdOutlinePhoneIphone />
-          <p>{user1.phone}</p>
-        </div>
-        <div className="flex items-center space-between gap-3">
-          <FaLinkedinIn />
-          <p>{user1.linkedin}</p>
-        </div>
-        <div className="flex items-center space-between gap-3">
-          <MdLocationOn />
-          <p>{user1.location}</p>
-        </div>
+      <div className="flex flex-col w-[100%]">
+        
   
       </div>
     );                                                                                                        
