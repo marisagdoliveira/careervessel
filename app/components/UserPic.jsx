@@ -14,13 +14,13 @@ const UserPic = ({ user }) => {
   return (
 
 
-        <div className="w-[100%] rounded-full flex justify-center items-center">
-          {userPic ? (
-            <img src={`/assets/userPics/${userPic}`} alt="User Pic" className="w-[100%] rounded-full object-cover" />
-          ) : (
-            <div className='w-[100%] box-gradient'><div/></div>
-          )}
-        </div>
+    <div className="w-[100%] h-[100%] rounded-full overflow-hidden flex justify-center items-center">
+      {userPic ? (
+        <img src={`/assets/userPics/${userPic}`} alt="User Pic" className="w-[100%] h-[100%] rounded-full object-cover" />
+      ) : (
+        <div className='w-full h-full box-gradient'><div /></div>
+      )}
+    </div>
 
 
   );

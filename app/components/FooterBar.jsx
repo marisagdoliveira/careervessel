@@ -11,7 +11,7 @@ const FooterBar = () => {
         <div className='h-[100%] flex justify-center items-center gap-2 mt-[50px]'>
           <FaRegCopyright />
 
-          <p>All rights reserved</p>
+          <p>2024 CareerVessel</p>
           <CVLogo
             style={{ width: "30px", height: "30px" }}
 

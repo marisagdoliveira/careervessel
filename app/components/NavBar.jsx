@@ -34,17 +34,17 @@ const NavBar = ({user}) => {
     {!dropdown && ( <Dropdown onClick={() => setDropdown(true)} className="mr-5  size-8 cursor-pointer"/>)}
          
     {dropdown && (
-            <div onMouseLeave={() => setDropdown(false)} className="absolute h-[50px] w-[60px] top-[0] right-[0] hover:h-[220px]  hover:w-[180px] transition-all top-2 right-5 bg-zinc-950/90 text-transparent hover:text-white font-base text-sm px-5 py-5 rounded-l-lg z-10">
+            <div onMouseLeave={() => setDropdown(false)} className="absolute h-[50px] w-[60px] top-[0] right-[0] hover:h-[230px]   hover:w-[230px] transition-all top-2 right-5 bg-zinc-950/90 text-transparent hover:text-white font-base text-sm px-5 py-5 rounded-l-lg z-10">
             <div className="flex flex-col items-center gap-2 justify-end">
             
             <div className="flex gap-2 w-[100%] items-center text-center py-1 px-5 rounded">
 
-               <div className="w-[20px]">
+               <div className="w-[20px] h-[20px]">
         <UserPic user = {user} /></div>
         
                
-      <span className="text-lg">{session?.user?.name}</span>
-      <RiCloseCircleFill onClick={() => setDropdown(false)} className="text-slate-400 cursor-pointer mb-1 hover:text-white"/>
+                  <span className="text-lg" style={{ whiteSpace: "nowrap" }}>{session?.user?.name}</span>
+      <RiCloseCircleFill onClick={() => setDropdown(false)} className="absolute right-4 text-slate-400 size-4 cursor-pointer hover:text-white"/>
             </div>
           
             <Link href="/dashboard" className="text-gradient w-[8vw] text-white py-[2px] px-5 rounded-lg text-center border-2 border-transparent hover:border-2 hover:border-indigo-500 hover:text-purple-400">Homepage</Link>

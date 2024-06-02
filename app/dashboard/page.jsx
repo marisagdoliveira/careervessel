@@ -141,7 +141,7 @@ function mostracenas () {
 
 
   return (
-    <div className="relative w-screen h-[100vw] bg-zinc-900 overflow-hidden ">
+    <div className="relative w-screen h-[100vw] bg-zinc-900 overflow-hidden">
       <div
         className="absolute bg-transparent pointer-events-none "
         style={{ width: "100vw", zIndex: 0, top: "-220px" }}
@@ -154,11 +154,13 @@ function mostracenas () {
       <div className="flex justify-between ">
         <div className="relative flex flex-col px-32 py-20">
           <div className="font-base text-5xl text-white">
-            <p className="mb-3">
-              Welcome back,
-            </p>
-            <p>
+            <p className="mb-3 w-[500px]" style={{ whiteSpace: "normal" }}>
+              <span style={{ whiteSpace: "nowrap" }}>Welcome back,</span>
+              
+            
+              <span className="w-[100px] pr-16" style={{ whiteSpace: "normal" }}>&nbsp;
             {objectUser.name}
+            </span>
             </p>
           </div>
           <div className="absolute top-36 left-96">
@@ -202,7 +204,7 @@ function mostracenas () {
       <div>
         <div className="ml-32 text-white font-base text-xl mt-[-30px]">
             <p onClick={mostracenas} className="mb-2">Your Library</p>
-            <div className="bg-white rounded-lg py-5 px-10 flex gap-5 w-[600px] h-[190px] overflow-x-auto overflow-y-hidden">
+            <div className="bg-white rounded-lg py-5 px-10 flex gap-5 w-[600px] h-[190px] scrollbar overflow-x-auto overflow-y-hidden">
               {
                 library.map((a, key) => {
                   return (

@@ -8,6 +8,7 @@ import { getSession } from "next-auth/react";
 import React, { useState, useEffect } from "react";
 import FileUploadComponent from "../components/FileUploadComponent";
 import UpdateUserForm from "../components/UpdateUser";
+import FooterBar from "../components/FooterBar";
 const page = () => {
   const [objectUser, setObjectUser] = useState(userModel);
   const [loading, setLoading] = React.useState(false);
@@ -60,7 +61,7 @@ const page = () => {
               
               <h1 className="text-2xl text-white font-semibold">{objectUser.name}</h1>
               
-              <div className="w-36 ">
+              <div className="w-32 h-32">
                 
                 <UserPic user={objectUser} />
               </div>
@@ -72,6 +73,7 @@ const page = () => {
           </div>
         </div>
       </div>
+      <FooterBar />
     </div>
   );
 };

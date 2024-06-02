@@ -24,6 +24,7 @@ import Chatbot from "../components/Chatbot";
 import Link from "next/link";
 import LinkedinSearch from "../components/Linkedin";
 import UndoRedo from "../components/UndoRedo";
+import FooterBar from "../components/FooterBar";
 
 const page = () => {
   const printRef = useRef();
@@ -212,7 +213,7 @@ const page = () => {
         <Vshape style={{ width: "100%", height: "100%" }} />
       </div>
       <div
-        className="w-screen h-[100vw] pb-[100px] bg-zinc-900 "
+        className="w-screen h-[100vw] pb-[100px]  bg-zinc-900 "
         style={{ zIndex: 1 }}
       >
         <NavBar user={objectUser} />
@@ -465,7 +466,7 @@ const page = () => {
               </div>
               <div className="bg-white flex flex-col items-center gap-10 p-5 rounded-md">
                 <p className="text-gradient font-semibold text-4xl">Layout</p>
-                <div className="flex flex-col gap-4 h-[800px] overflow-auto overflow-x-hidden">
+                <div className="flex flex-col gap-4 h-[800px] scrollbar overflow-auto overflow-x-hidden">
                   <img
                     src={`/assets/cvPics/Cv1.png`}
                     onClick={(e) => setSelectedCv("Cv1")}
@@ -521,6 +522,10 @@ const page = () => {
           </div>
         </div>
       </div>
+      <div className="relative mt-[180px] h-2 bg-zinc-900">
+<FooterBar/>
+      </div>
+      
     </div>
   );
 };

@@ -23,7 +23,7 @@ input {
 }
 .box-gradient-nav {
   background: linear-gradient(15deg, transparent 30%, rgba(48, 156, 255, 1) 50%, rgba(146, 8, 194, 1));
-  background-size: 100% 170%;
+  background-size: 100% 200%;
   
     -webkit-animation: gradientAnimation 11s ease infinite;
     -moz-animation: gradientAnimation 11s ease infinite;
@@ -154,4 +154,26 @@ input {
   100% {
     background-position: 93% 0%
   }
+}
+
+
+.scrollbar {
+  scrollbar-width: thin;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: #303030;
+  border-radius: 10px;
 }
