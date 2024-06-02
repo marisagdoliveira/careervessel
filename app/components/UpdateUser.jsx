@@ -64,7 +64,7 @@ const UpdateUserForm = (user) => {
 
        <label className='flex flex-col items-center gap-2 mb-4'>
         Change your email
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className='box-gradient rounded-2xl text-sm h-8 w-64 text-white text-center'/>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className='box-gradient  rounded-2xl text-sm h-8 w-64 text-white text-center'/>
       </label>
     </div>
     <div className='flex gap-10'>

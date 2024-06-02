@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 input {
-  @apply w-[20vw] h-[3vw] text-[1vw] rounded-md px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-purple-300/30
+  @apply w-[20vw] h-[3vw] text-[1vw] rounded-md px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-900 focus:border-transparent bg-purple-300/30
 }
 
 .text-gradient {
@@ -12,11 +12,22 @@ input {
   -webkit-text-fill-color: transparent;
 }
 
+
 .box-gradient {
-  background: linear-gradient(to bottom right, #9208C2, #309CFF);
+  background: linear-gradient(15deg, #9208C2, #309CFF, #9208C2);
+  background-size: 100% 300%;
+  
+    -webkit-animation: gradientAnimation 11s ease infinite;
+    -moz-animation: gradientAnimation 11s ease infinite;
+    animation: gradientAnimation 15s ease infinite;
 }
 .box-gradient-nav {
   background: linear-gradient(15deg, transparent 30%, rgba(48, 156, 255, 1) 50%, rgba(146, 8, 194, 1));
+  background-size: 100% 170%;
+  
+    -webkit-animation: gradientAnimation 11s ease infinite;
+    -moz-animation: gradientAnimation 11s ease infinite;
+    animation: gradientAnimation 11s ease infinite;
 }
 
 @keyframes spinio {
@@ -91,4 +102,56 @@ input {
 
 .hidden-input {
   display: none;
+}
+
+
+.gradient-box-animated {
+  background: linear-gradient(15deg, #9208C2, #309CFF, #9208C2);
+  background-size: 100% 300%;
+
+  -webkit-animation: gradientAnimation 11s ease infinite;
+  -moz-animation: gradientAnimation 11s ease infinite;
+  animation: gradientAnimation 11s ease infinite;
+}
+
+@-webkit-keyframes gradientAnimation {
+  0% {
+    background-position: 93% 0%
+  }
+
+  50% {
+    background-position: 0% 100%
+  }
+
+  100% {
+    background-position: 93% 0%
+  }
+}
+
+@-moz-keyframes gradientAnimation {
+  0% {
+    background-position: 93% 0%
+  }
+
+  50% {
+    background-position: 0% 100%
+  }
+
+  100% {
+    background-position: 93% 0%
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 93% 0%
+  }
+
+  50% {
+    background-position: 0% 100%
+  }
+
+  100% {
+    background-position: 93% 0%
+  }
 }

@@ -23,6 +23,7 @@ import Cv6 from "../components/MiniCVs/Cv6";
 import Cv7 from "../components/MiniCVs/Cv7";
 import Cv8 from "../components/MiniCVs/Cv8";
 import { useRouter } from "next/navigation";
+import FooterBar from "../components/FooterBar";
 
 
 export default function Dashboard() {
@@ -160,13 +161,13 @@ function mostracenas () {
             {objectUser.name}
             </p>
           </div>
-          <div className="absolute top-40 left-96">
+          <div className="absolute top-36 left-96">
             <div className=" flex-col justify-center text-center items-center">
               <div className="size-44 mb-10">
                 <UserPic user={objectUser} />
               </div>
               <Link
-                className="box-gradient rounded-lg px-6 py-2 text-white font-semibold "
+                className="box-gradient rounded-lg px-6 py-2 text-white hover:text-zinc-900 transition-all font-semibold "
                 href="/profile"
               >
                 Edit Profile
@@ -177,11 +178,14 @@ function mostracenas () {
 
         <div className="relative box-gradient font-bold text-white rounded-3xl text-6xl p-10 w-[38vw] h-[25vw] mt-20">
 
-          <p>Generate</p>
-          <p className="ml-40">your CV!</p>
-          <Link href="/generator">
-          <div className="absolute top-[60px] right-[55px]">
-          <Generate />
+          
+          <Link href="/generator" >
+            <div className=" ml-[-4px] hover:ml-2 transition-all" >
+            <p >Generate</p>
+            <p className="ml-40">your CV!</p>
+            </div>
+          <div className="absolute top-[50px] right-[45px]">
+          <Generate className="size-[100%] hover:size-[120%] transition-all"/>
           </div></Link>
           <div>
 
@@ -196,14 +200,14 @@ function mostracenas () {
       </div>
 
       <div>
-        <div className="ml-32 text-white font-base text-2xl ">
-            <p onClick={mostracenas} className="mb-5">Your Library</p>
+        <div className="ml-32 text-white font-base text-xl mt-[-30px]">
+            <p onClick={mostracenas} className="mb-2">Your Library</p>
             <div className="bg-white rounded-lg py-5 px-10 flex gap-5 w-[600px] h-[190px] overflow-x-auto overflow-y-hidden">
               {
                 library.map((a, key) => {
                   return (
 
-                    <div key={key} className="relative w-[100px] h-[140px] shadow-purple flex-shrink-0 shadow-lg rounded-md">
+                    <div key={key} className="relative w-[100px] h-[140px] shadow-purple flex-shrink-0 shadow-lg rounded-md mb-2">
                       {a.layout === "Cv1" && <Cv1 user={objectUser} colors={a.colors} className="absolute w-[100px] h-[140px] rounded-md"/>}
                       {a.layout === "Cv2" && <Cv2 user={objectUser} colors={a.colors} className="absolute w-[100px] h-[140px] rounded-md"/>}
                       {a.layout === "Cv3" && <Cv3 user={objectUser} colors={a.colors} className="absolute w-[100px] h-[140px] rounded-md"/>}
@@ -225,13 +229,14 @@ function mostracenas () {
               }
               <div className="flex flex-col gap-1 my-5 items-center justify-center rounded-lg bg-white py-1 px-3">
                 <Link href="/generator">
-                  <Add className="size-6" />
+                  <Add className="size-6 hover:size-7 transition-all" />
                 </Link>
               </div>
             </div>
 
         </div>
       </div>
+      <FooterBar />
     </div>
   );
 }

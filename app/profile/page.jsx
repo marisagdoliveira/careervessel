@@ -56,7 +56,7 @@ const page = () => {
         <div className="flex flex-col items-center w-full ">
           <div className="flex justify-center w-[60vw] h-[100vw] bg-gradient-to-t from-black to-transparent ">
             
-            <div className="flex flex-col gap-5 items-center mt-16">
+            <div className="flex flex-col gap-2 items-center mt-2">
               
               <h1 className="text-2xl text-white font-semibold">{objectUser.name}</h1>
               

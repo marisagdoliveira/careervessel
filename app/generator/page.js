@@ -204,7 +204,7 @@ const page = () => {
   };
 
   return (
-    <div className="relative bg-zinc-900 h-[100vw]">
+    <div className="relative bg-zinc-900 h-[100vw] transition-all duration-75">
       <div
         className="absolute bg-transparent pointer-events-none "
         style={{ width: "100vw", zIndex: 0, top: "-220px" }}
@@ -236,7 +236,7 @@ const page = () => {
               >
                 Share your story with us:
               </label>
-              <div className="box-gradient p-1 rounded-md focus:border-2 mt-5 mb-5 focus:border-purple-500">
+              <div className="gradient-box-animated p-1 rounded-md focus:border-2 mt-5 mb-5 focus:border-purple-500">
                 <textarea
                   rows={10}
                   onChange={(e) => setdescription(e.target.value)}
@@ -246,7 +246,7 @@ const page = () => {
                     "For a more detailed and accurate CV, don't forget to specify your: \n\n  - Experience (where you've been, your roles and when you did it);\n  - Education (what you studied, your degree, your school and when you did it); \n  - Objective (what you're looking for). \n\nIf there's something you want to add or change when the CV's generated, you can edit the information to your liking."
                   }
                   className={
-                    "w-[27vw] h-[19vw] text-sm bg-zinc-950 text-white p-5   rounded-md outline-0"
+                    "w-[27vw] h-[20vw] text-sm bg-zinc-950 text-white p-5   rounded-md outline-0"
                   }
                 />
                 <style jsx>{`
@@ -263,23 +263,23 @@ const page = () => {
               <div className="text-center">
                 <button
                   className={
-                    "inline-flex items-center px-14 py-1.5 font-semibold leading-6 text-lg rounded-md text-white box-gradient hover:bg-purple disabled:bg-purple-200 transition ease-in-out duration-150 disabled:cursor-not-allowed"
+                    " w-[250px] text-center px-6 py-1.5 font-semibold leading-6 text-lg rounded-md text-white gradient-box-animated hover:text-zinc-800 disabled:cursor-not-allowed transition-all"
                   }
                   type={"submit"}
                   disabled={loading}
                 >
-                  {loading ? "Gimme a second..." : "Generate your CV"}
+                  {loading ? "Please wait" : "Generate CV"}
                 </button>
               </div>
             </form>
             <div className="flex flex-col items-end w-[100%] mt-10 gap-3">
-              <div className="flex flex-col gap-1 my-5 items-center justify-center rounded-lg bg-white py-1 px-3">
-                <p className="text-gradient">Add to Library</p>
-                <button onClick={handleSaveToLibrary}>
+              <div className="flex flex-col gap-1 my-5 items-center justify-center  rounded-lg hover:bg-purple-600/10 transition-all duration-75  bg-white py-1 px-3">
+                <button onClick={handleSaveToLibrary} className="flex flex-col gap-1 items-center text-gradient font-semibold py-1">
+                <p>Add to Library</p>
                   <Add className="size-6" />
                 </button>
               </div>
-              <div className="flex justify-center rounded-lg bg-white py-1 px-3">
+              <div className="flex justify-center rounded-lg bg-white hover:bg-purple-600/10 transition-all duration-75 py-1 px-3 ">
                 <button
                   onClick={handleSavePdf}
                   className=" text-gradient text-zinc-50 gap-2 flex justify-center items-center font-bold flex-row"
@@ -297,17 +297,18 @@ const page = () => {
               
               <Link
                 href="/profile"
-                className="flex gap-2 items-center text-gradient font-semibold text-zinc-50 py-1 px-3  mr-60 cursor-pointer"
-              >
-                <p>Edit Contact Details</p>
-                <Edit />
+                className="flex items-center py-1 px-3 rounded-lg  transition-all duration-75 rounded-lg font-semibold text-zinc-50 hover:text-lg hover:pr-1 hover:pl-0 transition-all  mr-60 cursor-pointer "
+              > <div className="relative w-[170px] mb-[24px]">
+                  <p className="absolute left-0 top-0 text-gradient ">Edit contact details</p>
+                  </div>
+                <Edit/>
               </Link>
             </div>
             <div className="flex gap-3 mt-2">
               <div className="relative">
                 <div className="absolute mb-[10px] right-0 top-[-40px]">
                   {!colorsMenu && (
-                    <div className=" rounded-lg mb-2 flex items-center gap-2 w-fit p-1 bg-white transition-all">
+                    <div className=" rounded-lg mb-2 flex items-center gap-2 w-fit p-1 bg-white text-gray-500  hover:bg-purple-600/10 transition-all duration-75">
                       <div
                         onClick={(e) => setColorsMenu(true)}
                         className="rounded-full cursor-pointer size-4"
@@ -323,16 +324,16 @@ const page = () => {
                       </p>
                       <TiArrowSortedDown
                         onClick={(e) => setColorsMenu(true)}
-                        className="text-gradient cursor-pointer"
+                        className=" cursor-pointer hover:text-white"
                       />
                     </div>
                   )}
 
                   {colorsMenu && (
-                    <div className="w-[15vw] absolute right-0 rounded-lg p-1 bg-white">
+                    <div className="w-[32vw] absolute right-0 rounded-lg p-1 pr-4 bg-purple-600/10">
                       <div className=" flex justify-end">
                         <RiCloseCircleFill
-                          className="text-slate-400 cursor-pointer mb-1"
+                          className="absolute right-2 top-3 text-slate-400 hover:text-white cursor-pointer mb-1"
                           onClick={(e) => setColorsMenu(false)}
                         />
                       </div>
@@ -341,7 +342,7 @@ const page = () => {
                           onClick={(e) =>
                             setColors({ color1: "#7568CD", color2: "#4b2e83" })
                           }
-                          className="rounded-full size-8 cursor-pointer"
+                          className="rounded-full size-8    hover:border-2 border-black/50 hover:border-black/50 transition-colors duration-75 cursor-pointer "
                           style={{
                             background: `linear-gradient(to bottom right, #7568CD, #4b2e83)`,
                           }}
@@ -350,7 +351,7 @@ const page = () => {
                           onClick={(e) =>
                             setColors({ color1: "#444444", color2: "#888888" })
                           }
-                          className="rounded-full size-8 cursor-pointer"
+                          className="rounded-full size-8 hover:border-2 border-black/50 hover:border-black/50 transition-colors duration-75 cursor-pointer"
                           style={{
                             background: `linear-gradient(to bottom right, #444444, #888888)`,
                           }}
@@ -359,7 +360,7 @@ const page = () => {
                           onClick={(e) =>
                             setColors({ color1: "#a6c6ea", color2: "#92a6db" })
                           }
-                          className="rounded-full size-8 cursor-pointer"
+                          className="rounded-full size-8 hover:border-2 border-black/50 hover:border-black/50 transition-colors duration-75 cursor-pointer"
                           style={{
                             background: `linear-gradient(to bottom right, #a6c6ea, #92a6db)`,
                           }}
@@ -368,7 +369,7 @@ const page = () => {
                           onClick={(e) =>
                             setColors({ color1: "#e6e6fa", color2: "#9eaaba" })
                           }
-                          className="rounded-full size-8 cursor-pointer"
+                          className="rounded-full size-8 hover:border-2 border-black/50 hover:border-black/50 transition-colors duration-75 cursor-pointer"
                           style={{
                             background: `linear-gradient(to bottom right, #e6e6fa, #9eaaba)`,
                           }}
@@ -377,7 +378,7 @@ const page = () => {
                           onClick={(e) =>
                             setColors({ color1: "#dddfff", color2: "#fdd3c3" })
                           }
-                          className="rounded-full size-8 cursor-pointer"
+                          className="rounded-full size-8 hover:border-2 border-black/50 hover:border-black/50 transition-colors duration-75 cursor-pointer"
                           style={{
                             background: `linear-gradient(to bottom right, #dddfff, #fdd3c3)`,
                           }}
@@ -386,7 +387,7 @@ const page = () => {
                           onClick={(e) =>
                             setColors({ color1: "#c6b5a6", color2: "#918479" })
                           }
-                          className="rounded-full size-8 cursor-pointer"
+                          className="rounded-full size-8 hover:border-2 border-black/50 hover:border-black/50 transition-colors duration-75 cursor-pointer"
                           style={{
                             background: `linear-gradient(to bottom right, #c6b5a6, #918479)`,
                           }}
@@ -395,7 +396,7 @@ const page = () => {
                           onClick={(e) =>
                             setColors({ color1: "#b27e7d", color2: "#edc8c4" })
                           }
-                          className="rounded-full size-8 cursor-pointer"
+                          className="rounded-full size-8 hover:border-2 border-black/50 hover:border-black/50 transition-colors duration-75 cursor-pointer"
                           style={{
                             background: `linear-gradient(to bottom right, #b27e7d, #edc8c4)`,
                           }}
@@ -404,7 +405,7 @@ const page = () => {
                           onClick={(e) =>
                             setColors({ color1: "#da635d", color2: "#4e4e56" })
                           }
-                          className="rounded-full size-8 cursor-pointer"
+                          className="rounded-full size-8 hover:border-2 border-black/50 hover:border-black/50 transition-colors duration-75 cursor-pointer"
                           style={{
                             background: `linear-gradient(to bottom right, #da635d, #4e4e56)`,
                           }}
@@ -413,7 +414,7 @@ const page = () => {
                           onClick={(e) =>
                             setColors({ color1: "#567356", color2: "#354531" })
                           }
-                          className="rounded-full size-8 cursor-pointer"
+                          className="rounded-full size-8 hover:border-2 border-black/50 hover:border-black/50 transition-colors duration-75 cursor-pointer"
                           style={{
                             background: `linear-gradient(to bottom right, #567356, #354531)`,
                           }}
@@ -422,7 +423,7 @@ const page = () => {
                           onClick={(e) =>
                             setColors({ color1: "#6e3838", color2: "#5b2a2a" })
                           }
-                          className="rounded-full size-8 cursor-pointer"
+                          className="rounded-full size-8 hover:border-2 border-black/50 hover:border-black/50 transition-colors duration-75 cursor-pointer"
                           style={{
                             background: `linear-gradient(to bottom right, #6e3838, #5b2a2a)`,
                           }}
@@ -430,7 +431,7 @@ const page = () => {
                       </div>
                     </div>
                   )}
-                  <div className="absolute right-[-149px] top-[0]">
+                  <div className="absolute right-[-156px] top-[0]">
                 <UndoRedo />
               </div>
                 </div>
@@ -464,7 +465,7 @@ const page = () => {
               </div>
               <div className="bg-white flex flex-col items-center gap-10 p-5 rounded-md">
                 <p className="text-gradient font-semibold text-4xl">Layout</p>
-                <div className="flex flex-col gap-4 h-[800px] overflow-auto ">
+                <div className="flex flex-col gap-4 h-[800px] overflow-auto overflow-x-hidden">
                   <img
                     src={`/assets/cvPics/Cv1.png`}
                     onClick={(e) => setSelectedCv("Cv1")}

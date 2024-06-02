@@ -18,12 +18,12 @@ function UndoRedo() {
 
 
   return (
-    <div className='flex gap-5'>
+    <div className='relative w-[4vw]'>
       <button onClick={handleUndo}>
-        <Undo className="size-8"/>
+        <Undo className="absolute right-[60px] top-0 size-8 hover:size-9 transition-all duration-75"/>
       </button>
       <button onClick={handleRedo}> 
-      <Redo className="size-8"/>
+        <Redo className="absolute right-[00px] top-0 size-8 hover:size-9 transition-all duration-75"/>
       </button>
     </div>
   );
