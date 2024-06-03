@@ -155,7 +155,7 @@ const Name = ({userprop, objectprop}) => {
     const user1 = userprop
     const object1 = objectprop
     return <div>
-        <h1 className='text-7xl font-bold mb-1'>{user1.name}</h1>
+        <h1 className='text-5xl font-bold mb-1 w-[100%]'>{user1.name}</h1>
         {object1.experience[0].role && (<p className='text-3xl mt-4 text-right'>{object1.experience[0].role}</p>)}
         </div>
 }
