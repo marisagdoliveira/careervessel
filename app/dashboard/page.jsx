@@ -154,11 +154,11 @@ function mostracenas () {
       <div className="flex justify-between ">
         <div className="relative flex flex-col px-32 py-20">
           <div className="font-base text-5xl text-white">
-            <p className="mb-3 w-[500px]" style={{ whiteSpace: "normal" }}>
+            <p className="mb-3 w-[450px]" style={{ whiteSpace: "normal" }}>
               <span style={{ whiteSpace: "nowrap" }}>Welcome back,</span>
               
             
-              <span className="w-[100px] pr-16" style={{ whiteSpace: "normal" }}>&nbsp;
+              <span className="w-[80px] pr-16" style={{ whiteSpace: "normal" }}>&nbsp;
             {objectUser.name}
             </span>
             </p>

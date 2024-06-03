@@ -31,7 +31,8 @@ const LinkedinSearch = ({ objectGPT }) => {
     <div>
       <div className="">
         <Link
-          href={`https://www.linkedin.com/search/results/all/?keywords=${objectGPT.keywords[0]}`}
+        
+          href={`https://www.linkedin.com/jobs/search/?keywords=${objectGPT.keywords[0]}&origin=SWITCH_SEARCH_VERTICAL`}
           handleSubmit={handleSubmit}
           className="border-2 border-indigo-500 hover:bg-indigo-900 hover:text-white py-2 rounded-lg cursor-pointer text-indigo-500 m-6 p-6"
           target="_blank"
@@ -40,7 +41,7 @@ const LinkedinSearch = ({ objectGPT }) => {
           {objectGPT.keywords[0]}
         </Link>
         <Link
-          href={`https://www.linkedin.com/search/results/all/?keywords=${objectGPT.keywords[1]}`}
+          href={`https://www.linkedin.com/jobs/search/?keywords=${objectGPT.keywords[1]}&origin=SWITCH_SEARCH_VERTICAL`}
           handleSubmit={handleSubmit}
           className="border-2 border-indigo-500 hover:bg-indigo-900 hover:text-white py-2 rounded-lg cursor-pointer text-indigo-500 m-6 p-6"
           target="_blank"
@@ -49,7 +50,7 @@ const LinkedinSearch = ({ objectGPT }) => {
           {objectGPT.keywords[1]}
         </Link>
         <Link
-          href={`https://www.linkedin.com/search/results/all/?keywords=${objectGPT.keywords[2]}`}
+          href={`https://www.linkedin.com/jobs/search/?keywords=${objectGPT.keywords[2]}&origin=SWITCH_SEARCH_VERTICAL`}
           handleSubmit={handleSubmit}
           className="border-2 border-indigo-500 hover:bg-indigo-900 hover:text-white py-2 rounded-lg cursor-pointer text-indigo-500 m-6 p-6"
           target="_blank"
@@ -58,7 +59,7 @@ const LinkedinSearch = ({ objectGPT }) => {
           {objectGPT.keywords[2]}
         </Link>
         <Link
-          href={`https://www.linkedin.com/search/results/all/?keywords=${objectGPT.keywords[3]}`}
+          href={`https://www.linkedin.com/jobs/search/?keywords=${objectGPT.keywords[3]}&origin=SWITCH_SEARCH_VERTICAL`}
           handleSubmit={handleSubmit}
           className="border-2 border-indigo-500 hover:bg-indigo-900 hover:text-white py-2 rounded-lg cursor-pointer text-indigo-500 m-6 p-6"
           target="_blank"
@@ -67,7 +68,7 @@ const LinkedinSearch = ({ objectGPT }) => {
           {objectGPT.keywords[3]}
         </Link>
         <Link
-          href={`https://www.linkedin.com/search/results/all/?keywords=${objectGPT.keywords[4]}`}
+          href={`https://www.linkedin.com/jobs/search/?keywords=${objectGPT.keywords[4]}&origin=SWITCH_SEARCH_VERTICAL`}
           handleSubmit={handleSubmit}
           className="border-2 border-indigo-500 hover:bg-indigo-900 hover:text-white py-2 rounded-lg cursor-pointer text-indigo-500 m-6 p-6"
           target="_blank"
